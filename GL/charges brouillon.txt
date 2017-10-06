@@ -1,0 +1,274 @@
+Très rapidement, le cahier des charges doit permettre de comprendre le but recherché, afin de permettre au maître d'oeuvre d'en saisir le sens.
+-------------------
+
+Le cahier des charges fonctionnel doit expliciter le besoin du client, au travers de fonctions de services et de fonctions de contraintes.
+ 
+Il présente le problème dans son ensemble, précisant le champ du domaine étudié (marché, études menées sur le même sujet ou sur un sujet proche, contexte du projet dans l'entreprise…)
+ 
+Il favorise le dialogue entre les différents partenaires, pour obtenir du prestataire la conception et la réalisation la plus efficace qui soit.
+ 
+Il facilite aussi le choix des solutions techniques proposées par la suite, en définissant les critères qui les départageront, ainsi que les niveaux souhaités ou exigés pour ces critères.
+ 
+Enfin, il peut s'agir d'un engagement contractuel entre les différentes parties, notamment concernant le respect des niveaux établis pour les critères, s'il est accompagné de clauses juridiques adéquates.
+----------------------------------
+Contexte 
+
+L’intelligence artificielle prend de plus en plus d’ampleur dans le monde d’aujourd’hui. Le
+multi-agents est une méthode de programmation pour créer des intelligences artificielles.
+
+----------------------------------
+
+Fonctionalités 
+Énoncé des fonctions :
+- Le jeu doit permettre à des joueurs de
+mesurer leur...
+- Doit être facile à utiliser
+
+Critère d'appréciation :
+- Durée d'une partie
+- Simplicité d'utilisation
+Éléments du jeu
+
+Contraintes :
+- Il faut réaliser par classe une série de 4 types de jeux :
+un jeu de chance, un jeu de rapidité, un jeu de réflexion, un jeu de
+connaissances.
+- Le jeu devra être facile à utiliser et à manipuler
+- Il devra respecter les normes en vigueur (réglementation en
+cours).
+
+----------------------------------------
+
+Offrir une simplicité d'utilisation
+Offrir une rapidité de mise en oeuvre
+Assurer des temps d'exécution faibles (lancement du jeu)(performance)
+Assurer des temps d'interactions joueur / machine faibles (fluidité)
+Offrir une conduite d'utilisation(guide)
+
+Dans la version finale, voici toutes les fonctionnalités de notre logiciel :
+-Entrée des contraintes par l’utilisateur par l’intermédiaire d’une interface graphique.
+-Possibilité d’entrer les contraintes aléatoirement.
+-Bannissement d’agent(s) pour trouver une solution s’il n’en existe pas de base de façon
+optimale.
+-Système d’importance des agents (rentrée par l’utilisateur) permettant de hiérarchiser les
+agents, cette hiérarchie est prise en compte dans le calcul.
+-Système de rôles pour les agents prit en compte dans le calcul de bannissement.
+
+3.1 Modèle détaillé des fonctions
+• Liste des fonctions attendues :
+Coté AIC NETWORK :
+- Permettre l'inscription et l'authentification des clients
+- Facturer et régler en ligne via smsroute.com
+- Proposer un catalogue client complet
+- Recevoir des messages en HTTP (api web) de clients
+- Recevoir des messages en FTP (fichiers csv) de clients
+- Recevoir des messages en SMTP (mail formatés) de clients
+- Réceptionner les confirmations de l'API fournisseur
+- Réceptionner les accusés d'acquittement et de réception de l'API
+fournisseur
+Coté OCITO (ou autre prestataire dans le futur) :
+- Recevoir de la part de l'API SMSROUTE, des messages FTP
+(fichiers) ou HTTP (api Web)
+- Émettre des réponses de prise en charge
+- Émettre des accusés de réception.
+- Émettre des SMS via un opérateur téléphonique standard
+Coté clients AIC :
+- Émettre des SMS en HTTP, FTP OU SMTP
+- Réceptionner les réponses de l'API AIC
+
+
+
+II) LES FONCTIONS
+A) MODELE GENERAL DES FONCTIONS
+- Présenter au joueur une interface d’entrée dans le jeu.
+- Expliquer au joueur sa première mission: quelle règle d’esthétique devrait-il
+prendre en compte.
+- Présenter une scène au joueur.
+- Mettre en évidence des éléments importants de la scène en les surlignant. Le
+joueur sera donc guidé, mais aura la liberté de prendre la photo tel qu’il le
+souhaite.
+- Photographier par un clic de sourie, avec possibilité de zoom et de faire une
+rotation.
+- Attribution d’une note au joueur en fonction de la correspondance entre les
+critères de sa photo et la mission courante.
+- Présenter une nouvelle mission si le joueur réussit.
+- Après un certain nombre de missions, attribuer une note finale au joueur.
+- Présenter au joueur les photos qu’il a prises dans un album photo à la fin de la
+partie.
+
+3) FONCTIONNALITES ERGONOMIQUES
+- Jouabilité simplifiée pour que l’utilisateur puisse utiliser l’application
+instantanément.
+
+---------------------------------------
+
+3.2.L’objectif :
+L’objectif du projet consiste à développer un site web dynamique d’une boutique de
+matériels audiovisuels.
+Ce site permettra de réaliser les opérations suivantes :
+? Gérer les relations avec les clients,
+? Gérer les relations avec les fournisseurs,
+? Gérer les commandes,
+? Mettre en place des promotions,
+? Gérer les produits (ajouter, modifier ou supprimer des produits),
+En effet, ce site donne aux internautes la possibilité de s’inscrire, effectuer leurs demandes
+en ligne, et de recevoir une confirmation immédiate. En plus, les internautes peuvent
+consulter en ligne le catalogue et toutes ses nouveautés.
+
+1.2. Enjeux et objectifs des animations
+L’objet de cette consultation est une commande de prestations artistiques, ou animations théâtrales,
+dont le but est non seulement d’informer le grand public de la mise en place du plan climat énergie
+territorial sur la communauté d’agglomération du Sicoval, mais aussi de leur permettre d’être acteur de
+son élaboration.
+Les animations proposées devront prendre en compte la spécificité du territoire, des thématiques
+abordées et de la démarche de plan climat territorial. Ces éléments sont présentés sur le site internet du
+Sicoval : www.sicoval.fr
+Dans le cadre de sa démarche participative, la Communauté d’Agglomération du Sicoval invite tous
+les acteurs qui vivent et font vivre le territoire à des temps d’information, d’échanges, de rencontre et
+de concertation. Pour mobiliser le plus largement possible le grand public, la communauté
+d'agglomération recherche de nouveaux moyens d’interpeller et d’impliquer la population du territoire
+en utilisant des moyens artistiques et ludiques. Dans cette optique, le théâtre semble un moyen
+pertinent à condition qu'il aille à la rencontre d’un public diversifié. Le Sicoval souhaite profiter
+d’événements n’ayant a priori aucun lien avec les questions environnementales et qui mobilisent déjà
+un public que ce soit des marchés de plein vent sur des communes du territoire ou encore des
+événements organisés par le Sicoval ou les communes du Sicoval (à l’instar des Randovales, du
+Trionval, de la Fête du Parc de Castanet, de la semaine du développement durable, des Journées de la
+Nature en Midi Pyrénées,....). L’intérêt de mobiliser à ces occasions est de toucher également un
+public peu sensibilisé ou intéressé par les thèmes évoqués.
+
+Les animations théâtrales proposées auront pour objectif de faire naître le débat au sein de la
+population. Au-delà d’une sensibilisation pour une prise de conscience des enjeux énergétiques et
+climatiques, les animations inviteront les personnes à s’impliquer dans la démarche de plan climat. Par
+des formes d’interaction qui restent à définir, il faut inciter le public à devenir acteur de la démarche.
+Les animations doivent donner envie d’imaginer la politique que la communauté d’agglomération
+pourrait mener, de proposer des pistes d’actions auxquelles il pourrait participer, etc. Ces avis et
+contributions doivent pouvoir constituer un recueil de réponses à la question « Que doivent faire
+le Sicoval et les acteurs du territoire pour contribuer, à leur niveau, à assurer la stabilité du climat ? ».
+Ce recueil ne constituera pas un engagement de faire mais la matière qui enrichira les débats qui
+permettront d’engager l’écriture du premier programme d’action du Plan climat du Sicoval.
+
+
+De veiller au bon fonctionnement
+
+? Idée générale
+
+Le jeu « Fish&Co » permet d’attirer l’attention des enfants sur les ordures jetés en mer. Afin de nettoyer l’eau de mer et de sauver les animaux marins emprisonnés par les ordures, ils vont devoir apprendre à bien trier les déchets dans les poubelles correspondantes.
+
+? But du jeu
+En un temps limité, il faut trier les déchets dans les bocaux concordants (vert pour les verres, jaune pour les déchets recyclables etc…) afin de sauver un animal marin et de passer au niveau supérieur.
+
+? Scénario
+
+Dans l’introduction, nous voyons des ordures, provenant d’un bateau, jetés en mer.
+L’eau claire, devient alors foncée et des poissons meurent à la surface.
+Une anguille se trouve prisonnière sous la pile de déchet. Un poisson et un requin sont les rescapés de ce dégât. Ils vont devoir sauver leurs compagnons de l’océan qui sont coincés par les débris. Pour cela, il faut trier le bon déchet dans le bocal convenu.
+Lorsque le passage devient accessible et que l’animal a été sauvé de cette pile de déchet, on peut passer au niveau suivant avec un compagnon en plus pour aider à trier.
+
+
+---------------------------------------
+Organisation
+
+D’un point de vue global, le projet se déroulera en trois grandes parties : documentation,
+développement et mise en production.
+VIII.1.1 Première année : Documentation, Conception
+Avant de passer à la réalisation concrète du produit, nous allons nous consacrer à la
+rédaction de plusieurs documents essentiels au bon déroulement du projet. En effet, il est
+nécessaire de définir précisément les détails du projet, la conception, étudier les différents
+outils et technologies à notre disposition et faire des choix
+
+Parmi les documents réalisés, on trouve :
+• 50 mots ;
+• étude de l’existant ;
+• étude détaillée ;
+• cahier des charges (trois versions) ;
+• diagramme de Gantt ;
+• bilan architecture.
+
+VIII.1.2 Deuxième année : Développement, Code, Tests
+
+Une fois les outils en main, les spécificités définies et les rôles attribués, nous commencerons
+à développer le produit.
+
+VIII.2.5 Outils
+Nous avons à notre disposition divers outils pour nous organiser et communiquer plus
+facilement :
+• une mailing-list et un canal IRC, permettant de traiter l’ensemble des diverses problématiques
+;
+• un dossier Google Docs, pour pouvoir partager les documents liés au projet et leur
+rédaction ;
+• Gtalk, une application de Google permettant d’organiser des visio-conférences via un
+navigateur ;
+• un dépôt Git ;
+• l’utilisation de Doodle, pour planifier plus facilement les réunions.
+
+
+Les membres du groupe se réuniront toutes les semaines pour parler de l’avancement
+du projet, des imprévus rencontrés et des objectifs à court terme.
+
+-------------------------------------
+
+
+Glossaire
+
+Multi-agents : Type de programmation mettant en scène différents agents pour parvenir à
+résoudre un problème donné. Il met en place un environnement contenant des relations, des
+opérateurs et des agents.
+
+Agent : Entité virtuelle autonome qui interagit avec son environnement. Ici, un agent
+appartient à un groupe et un rôle et peut communiquer avec les autres agents de la
+communauté.
+
+Un système multi-agent (SMA) est un système composé d'un ensemble d'agents, situés dans un certain environnement et interagissant selon certaines relations. Un agent est une entité caractérisée par le fait qu'elle est, au moins partiellement, autonome. Ce peut être un processus, un robot, un être humain, etc.
+
+
+Cahier des charges Le Cahier des charges vise à définir simplement les spécifications d’un
+produit ou d’un service à réaliser.
+
+Algorithme Suite finie et non-ambiguë d’instructions permettant de donner la réponse à un
+problème.
+
+Eclipse : un environnement de développement (IDE) Open Source
+principalement destiné au langage JAVA et fonctionnant à base d'extensions
+(plugins).
+
+Plug in : Application étendant les capacités et les fonctionnalités d'une autre application.
+
+
+-----------------------------------------------------
+
+
+Le sujet étant libre nous devions nous fixer notre propre cahier des charges. Nous avons
+décidé de fonctionner avec plusieurs versions.
+Pour chaque nouvelle version, nous nous réunissions pour conceptualiser un nouveau
+problème et une nouvelle solution (nouveau cahier des charges), puis nous nous répartissions
+les tâches pour effectuer chacun une partie du travail.
+Enfin, nous nous réunissions pour mettre en commun, effectuer une batterie de test et
+corriger les éventuelles erreurs.
+
+------------------------------------------------------
+
+4.3 Contraintes temporelles et ressources
+Le projet durera 9 mois. Il sera composé de deux périodes :
+une période à mitemps
+(3 mois) : le mardi, mercredi et jeudi de début janvier à fin
+mars
+une période à plein temps (6 mois) : de début avril à fin septembre.
+L'équipe de développement sera composée de deux personnes et le projet devra être terminé
+avant le 30 septembre.
+
+
+
+-------------------------------------------------------
+
+logger.info("Démarrage");
+logger.log(Level.INFO, "Démarrage");
+logger.debug("Message ignoré");
+
+-Entrée des contraintes par l’utilisateur par l’intermédiaire d’une interface graphique.
+-Possibilité d’entrer les contraintes aléatoirement.
+-Bannissement d’agent(s) pour trouver une solution s’il n’en existe pas de base de façon
+optimale.
+-Système d’importance des agents (rentrée par l’utilisateur) permettant de hiérarchiser les
+agents, cette hiérarchie est prise en compte dans le calcul.
+-Système de rôles pour les agents prit en compte dans le calcul de bannissement.
+

@@ -1,0 +1,52 @@
+// -*- ASCII:EDT -*-
+
+Requires(20101025);
+
+PushTagsandRegisters;
+
+GetString('Which is your dictionary? (e.g. Italian)','Insert language name');
+LetReg(1,"%!?");
+GetString('What is your dictionary name? (e.g. it.dic)','Insert dictionary name');
+LetReg(2,"%!?");
+
+IfFileExists('%C\%!2',>
+  !'CopyFile("%C\%!2","%b\Dict\%!1\%!2",1,1);',>
+  !'Prompt("File %C\%!2 does not exist!");>
+    PopTagsandRegisters;Exit;');
+
+IfFileExists('%b\ConfigEx\Dictionaries.ini',!'Relax;',>
+  !'CopyFile("%B\ConfigEx\Dictionaries.ini",>
+             "%b\ConfigEx\Dictionaries.ini",1,1);');
+ReadFile("%b\ConfigEx\Dictionaries.ini",0);
+
+FindInString('%!0','Dictionaries-%!1.ini',-1,-1);
+IfOK(!'Prompt("%!1 dictionary is already installed!");>
+       PopTagsandRegisters;Exit;');
+
+OpenOutput("%b\ConfigEx\Dictionaries-%!1.ini");
+WrS('/');
+WrL('/ -*- DATA:INI:EDT -*-');
+WrL('');
+WrL('[DICTIONARIES*]');
+WrL('');
+WrL('DICTIONARY="%!1"');
+WrL('  FILE="%%b\Dict\%!1\%!2"');
+WrL('  ENABLED=1');
+WrL('  MODE_FILTER=""');
+WrL('  LOAD_ON_START=1');
+WrL('  SAVE_ON_EXIT=1');
+WrL('  ADD_NEW_WORDS=0');
+WrL('  USE_FOR_COMPLETION=1');
+WrL('  ALLOW_COMPOUNDED_WORDS=1');
+CloseOutput;
+
+SubstituteInString('%!0','[END]%\',>
+  '%%INCLUDE="ConfigEx\Dictionaries-%!1.ini"%\%\[END]%\');
+WriteFile('%b\ConfigEx\Dictionaries.ini','%!0');
+LoadConfig('ConfigEx\Dictionaries.ini');
+
+Prompt("Installation Complete!");
+
+PopTagsandRegisters;
+
+End;
