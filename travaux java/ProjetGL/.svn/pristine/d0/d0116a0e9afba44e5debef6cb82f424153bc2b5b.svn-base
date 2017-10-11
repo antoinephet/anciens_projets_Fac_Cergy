@@ -1,0 +1,7 @@
+package chemin;
+import java.util.Collection;
+
+public interface SuccessorComputer<T> {
+	Collection<T> computeSuccessor(Node<T> node); 
+
+}

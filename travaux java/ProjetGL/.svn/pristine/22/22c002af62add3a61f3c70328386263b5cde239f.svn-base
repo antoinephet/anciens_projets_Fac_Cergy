@@ -1,0 +1,11 @@
+package genie;
+
+import javax.swing.JFrame;
+
+public class Ihm extends JFrame {
+
+	public Ihm() {
+
+	}
+
+}

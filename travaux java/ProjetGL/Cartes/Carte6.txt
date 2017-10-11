@@ -1,0 +1,21 @@
+0000000000000fff00000000000000
+011111        d3e       111110
+011111        d         111110
+011           d            110
+011           d            110
+0   22        d9       22    0
+0   22    111cdc111    22    0
+0   22    1baadaab1    22    0
+0         1bdddddb1          0
+f4       7cadddddac8        5f
+fdddddddddddddgddddddddddddddf
+f         cbdddddbc          f
+0         1bdddddb1          0
+0   22    1aaadaaa1    22    0
+0   22    111cdc111    22    0
+0   22        d        22    0
+011           d            110
+011           d            110
+011111        d         111110
+011111       6d e       111110
+0000000000000fff00000000000000

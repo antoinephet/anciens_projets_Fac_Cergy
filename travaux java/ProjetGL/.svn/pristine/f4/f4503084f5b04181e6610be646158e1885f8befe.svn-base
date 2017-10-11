@@ -1,0 +1,1370 @@
+package test;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+public class Grille {
+	// attributs de la classe
+	String grille[][];
+	int nbLigne,nbColonne,nb;
+	private static ArrayList<Mur> murs;
+	private static ArrayList<Eau> eaux;
+	private static ArrayList<Arbre> arbres;
+	
+	boolean choixGardien1;
+	boolean choixGardien2;
+	boolean choixGardien3;
+	boolean choixGardien4;
+	
+	Gardien gardien;
+	Intrus intrus;
+	Mur mur;
+	Arbre arbre;
+	Eau eau;
+	FileReader fr;
+	
+	// constructeur par défaut
+	
+	public Grille(int nbLigne,int nbColonne, int nb) {
+		
+		this.nbLigne = nbLigne;
+		this.nbColonne = nbColonne;
+		this.nb = nb;
+	}
+	
+	// int choice = (int)(Math.random()*4+1);
+	
+	
+	// constructeur 
+	public Grille(int ligne,int colonne) {
+		
+		// demande à l'utilisateur le choix de la taille de l'écran soit aléatoirement ou manuel
+		// si c'est un 1, choix aléatoire et prendra au hasard les dimensions du jeu
+		//si c'est un 2, choix manuel et l'utilisateur aura 3 choix, soit il tapera soit 1,2 ou 3 selon ce qui est demandé
+		
+		System.out.println("Quel type de choix pour la taille de votre écran ?\n1) aléatoire\n2) manuel");
+		Scanner sc1 = new Scanner(System.in);
+		int choix = sc1.nextInt() ;
+		
+		switch (choix){
+		
+		// choix aléatoire compris entre 1 et 2
+		
+		case 1 : int choix1 = (int)(Math.random()*2+1);
+		
+		switch (choix1){
+		
+		case 1 : nbLigne = nbColonne = 12;
+		System.out.println("vous avez choisi 12x12");
+		break ; 
+						
+		case 2 : nbLigne = nbColonne = 16;
+		System.out.println("vous avez choisi 16x16");
+		break ; 
+						
+		case 3 : nbLigne =nbColonne = 20;
+		System.out.println("vous avez choisi 20x20");
+		break ;
+					
+		default : System.out.println("Erreur!! Choisissez un autre chiffre svp");
+		
+		}
+		break ; 
+		
+		// choix manuel
+		case 2 : System.out.println("Choisissez les dimensions du jeu :\n1)12x12\n2)16x16\n3)20x20");
+		Scanner sc2 = new Scanner(System.in);
+		int choice2 = sc2.nextInt() ;
+		
+		switch (choice2){
+		
+		case 1 : nbLigne = nbColonne = 12;
+		System.out.println("vous avez choisi 12x12");
+		break ; 
+						
+		case 2 : nbLigne = nbColonne = 16;
+		System.out.println("vous avez choisi 16x16");
+		break ; 
+						
+		case 3 : nbLigne = nbColonne = 20;
+		System.out.println("vous avez choisi 20x20");
+		break ;
+					
+		default : System.out.println("Erreur!! Choisissez un autre chiffre svp");
+		
+		}
+		break ;
+					
+		default : System.out.println("Erreur!! Choisissez un autre chiffre svp");
+		
+		}
+		
+		
+		
+		
+		grille = new String[nbLigne][nbColonne];
+	}
+	
+	// méthode permettant de lire les fichiers .txt du dossier Cartes
+	public void chargementFichier(){
+		
+		try{
+			
+			// si la taille de l'écran est 12x12, alors le fichier Carte1.txt sera lu 
+			if(nbLigne==12 && nbColonne==12){
+				
+				fr = new FileReader("Cartes/Carte1.txt");
+				
+			}
+			
+			// si la taille de l'écran est 16x16, alors le fichier Carte2.txt sera lu 
+			if(nbLigne==16 && nbColonne==16){
+				
+				fr = new FileReader("Cartes/Carte2.txt");
+				
+			}
+			
+			// si la taille de l'écran est 20x20, alors le fichier Carte3.txt sera lu 
+			if((nbLigne==20) && (nbColonne==20)){
+				
+				fr = new FileReader("Cartes/Carte3.txt");
+				
+			}
+			
+			
+			int i = 0;
+			int x=0, y = 0;
+			
+			murs = new ArrayList<Mur>();
+			eaux = new ArrayList<Eau>();
+			arbres = new ArrayList<Arbre>();
+			
+			
+			while((i = fr.read()) != -1){
+				char conv = (char) i; // la valeur en int convertit en char
+				
+				// si la lecture trouve la valeur "0" dans le fichier, alors la valeur change en "M"
+				// et instance la classe Mur
+				if(conv == '0'){
+					grille[x][y] = "M";
+					mur = new Mur(x, y);
+					murs.add(mur);
+					
+				}
+				
+				// si la lecture trouve la valeur "1" dans le fichier, alors la valeur change en "A"
+				// et instance la classe Arbre
+				else if(conv == '1'){ // 
+					
+					grille[x][y] = "A";
+					arbre = new Arbre(x, y);
+					arbres.add(arbre);
+				}
+				
+				// si la lecture trouve la valeur "2" dans le fichier, alors la valeur change en "E"
+				// et instance la classe Eau
+				else if(conv == '2'){
+					grille[x][y] = "E";
+					eau = new Eau(x, y);
+					eaux.add(eau);
+				}
+				
+				// si la lecture trouve la valeur "3" dans le fichier, alors la valeur change en "G"
+				// et instance la classe Gardien
+				else if(conv == '3'){
+					
+					grille[x][y] = "G";
+					gardien = new Gardien(x, y);
+					
+				}
+				
+				// si la lecture trouve la valeur "4" dans le fichier, alors la valeur change en "S"
+				// et instance la classe Gardien
+				else if(conv == '4'){
+					grille[x][y] = "S";
+					gardien = new Gardien(x, y);
+					
+				}
+				
+				else if(conv == '5'){
+					grille[x][y] = "C";
+					gardien = new Gardien(x, y);
+					
+				}
+				
+				// si la lecture trouve la valeur "6" dans le fichier, alors la valeur change en "P"
+				// et instance la classe Gardien
+				else if(conv == '6'){
+					grille[x][y] = "P";
+					gardien = new Gardien(x, y);
+					
+				}
+				
+				// si la lecture trouve la valeur "7" dans le fichier, alors la valeur change en "I"
+				// et instance la classe intrus
+				else if(conv == '7'){
+					grille[x][y] = "I";
+					intrus = new Intrus(x, y);
+					
+				}
+				// si la lecture trouve la valeur "8" dans le fichier, alors la valeur change en "R"
+				// et instance la classe intrus
+				else if(conv == '8'){
+					grille[x][y] = "R";
+					intrus = new Intrus(x, y);
+					
+				}
+				
+				// si la lecture trouve la valeur "9" dans le fichier, alors la valeur change en "D"
+				// et instance la classe intrus
+				else if(conv == '9'){
+					grille[x][y] = "D";
+					intrus = new Intrus(x, y);
+					
+				}
+				// si la lecture trouve la valeur " " dans le fichier, alors la valeur change en " " donc pas de valeur
+				
+				else if(conv == ' '){
+					grille[x][y] = " ";
+				}
+				else if(conv == '\r' || conv == '\n'){
+					x--;
+				}
+				
+				if(x == nbLigne-1){ // si on atteint le x maximum, on incrémente le y
+					y++;
+					x=0;
+				}
+				else {
+					x++;
+				}
+				
+			}
+			
+		}catch(Exception ex){}
+		
+	}
+	
+	// methode qui affiche la grille du jeu
+	public void affichage(){
+		
+		System.out.println();
+		for (int i=0  ; i<nbLigne ; i++){
+			for(int j=0 ; j<nbColonne ; j++){
+				System.out.print(" |  " + grille[i][j] );
+				
+			}
+			System.out.println(" | ");
+		
+		} 
+		System.out.println();
+		
+	}
+	
+	// methode qui permet de déplacer les personnage mobiles vers le haut
+	public void deplacerHaut(){
+		
+		String vi ; // valeur intermédiaire
+		choixGardien1 = true;
+		
+		for(int i = 0;i<nbLigne;i++){
+			// gardien 1
+			for(int j = 0;j<nbColonne;j++){
+				if(grille[i][j] == "G" && choixGardien1){ // on cherche un gardien
+					if(i-1 >=0 && grille[i-1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i-1][j] = vi; // on déplace le gardien
+						
+					}if(i-1 >=0 && grille[i-1][j] == "I"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "R"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "D"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 <= nbLigne || grille[i-1][j] == "M" || grille[i-1][j] == "A" || grille[i-1][j] == "E"){
+						
+						collisionObstacle();
+						
+						
+					}
+					
+				}
+				// gardien 2
+				if(grille[i][j] == "S" && choixGardien2){ // on cherche un gardien
+					if(i-1 >=0 && grille[i-1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i-1][j] = vi; // on déplace le gardien
+						
+					}if(i-1 >=0 && grille[i-1][j] == "I"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "R"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "D"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 <= nbLigne || grille[i-1][j] == "M" || grille[i-1][j] == "A" || grille[i-1][j] == "E"){
+						
+						collisionObstacle();
+						
+						
+					}
+					
+				}
+				
+				// gardien 3
+				if(grille[i][j] == "C" && choixGardien3){ // on cherche un gardien
+					if(i-1 >=0 && grille[i-1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i-1][j] = vi; // on déplace le gardien
+						
+					}if(i-1 >=0 && grille[i-1][j] == "I"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "R"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "D"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 <= nbLigne || grille[i-1][j] == "E" || grille[i-1][j] == "A" || grille[i-1][j] == "M"){
+						
+						collisionObstacle();
+						
+						
+					}
+					
+				}
+				// guardian 4
+				if(grille[i][j] == "P" && choixGardien4){ // on cherche un gardien
+					if(i-1 >=0 && grille[i-1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i-1][j] = vi; // on déplace le gardien
+						
+					}if(i-1 >=0 && grille[i-1][j] == "I"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "R"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 >=0 && grille[i-1][j] == "D"){
+						grille[i-1][j] = " ";
+						collisionReperage();
+						
+						
+					}if(i-1 <= nbLigne || grille[i-1][j] == "E" || grille[i-1][j] == "A" || grille[i-1][j] == "M"){
+						
+						collisionObstacle();
+						
+						
+					}
+					
+				}
+				// intrus 1
+				if(grille[i][j] == "I"){//  on cherche l'intrus
+					if(i-1 >=0 && grille[i-1][j] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i-1][j] = vi; // on déplace l'intrus
+						
+					}if(i-1 >=0 && grille[i-1][j] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 <= nbLigne || grille[i-1][j] == "E" || grille[i-1][j] == "A" || grille[i-1][j] == "M"){
+						
+						collisionObstacle();
+						
+						
+					}
+
+
+				}
+				// intrus 2
+				if(grille[i][j] == "R"){//  on cherche l'intrus
+					if(i-1 >=0 && grille[i-1][j] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i-1][j] = vi; // on déplace l'intrus
+						
+					}if(i-1 >=0 && grille[i-1][j] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 <= nbLigne || grille[i-1][j] == "E" || grille[i-1][j] == "A" || grille[i-1][j] == "M"){
+						
+						collisionObstacle();
+						
+						
+					}
+
+
+				}
+				// intrus 3
+				if(grille[i][j] == "D"){//  on cherche l'intrus
+					if(i-1 >=0 && grille[i-1][j] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i-1][j] = vi; // on déplace l'intrus
+						
+					}if(i-1 >=0 && grille[i-1][j] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 >=0 && grille[i-1][j] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(i-1 <= nbLigne || grille[i-1][j] == "E" || grille[i-1][j] == "A" || grille[i-1][j] == "M"){
+						
+						collisionObstacle();
+						
+						
+					}
+
+
+				}
+				
+			}
+		}
+		
+		
+		
+	}
+	
+	// methode qui permet de déplacer les personnage mobiles vers le bas
+	public void deplacerBas(){
+		
+		choixGardien1 = true;
+		
+		String vi ; // valeur intermédiaire
+		for(int i = 0;i<nbLigne;i++){
+			for(int j = 0;j<nbColonne;j++){
+				
+				if(grille[i][j] == "G" && choixGardien1){ // on cherche un gardien
+					if(i+1 <= nbLigne && grille[i+1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i+1][j] = vi; // on déplace le gardien
+						return;
+					}if(i+1 <=nbLigne && grille[i+1][j] == "I"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "R"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "D"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne || grille[i+1][j] == "E" || grille[i+1][j] == "A" || grille[i+1][j] == "M"){
+						
+						collisionObstacle();
+						return;
+						
+					}
+
+
+				}
+				// gardien 2
+				if(grille[i][j] == "S" && choixGardien2){ // on cherche un gardien
+					if(i+1 <= nbLigne && grille[i+1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i+1][j] = vi; // on déplace le gardien
+						return;
+					}if(i+1 <=nbLigne && grille[i+1][j] == "I"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "R"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "D"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne || grille[i+1][j] == "E" || grille[i+1][j] == "A" || grille[i+1][j] == "M"){
+						
+						collisionObstacle();
+						return;
+						
+					}
+
+
+				}
+				// gardien 3
+				if(grille[i][j] == "C" && choixGardien3){ // on cherche un gardien
+					if(i+1 <= nbLigne && grille[i+1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i+1][j] = vi; // on déplace le gardien
+						return;
+					}if(i+1 <=nbLigne && grille[i+1][j] == "I"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "R"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "D"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne || grille[i+1][j] == "E" || grille[i+1][j] == "A" || grille[i+1][j] == "M"){
+						
+						collisionObstacle();
+						return;
+						
+					}
+
+
+				}
+				// gardien 4
+				if(grille[i][j] == "P" && choixGardien4){ // on cherche un gardien
+					if(i+1 <= nbLigne && grille[i+1][j] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i+1][j] = vi; // on déplace le gardien
+						return;
+					}if(i+1 <=nbLigne && grille[i+1][j] == "I"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "R"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <=nbLigne && grille[i+1][j] == "D"){
+						grille[i+1][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne || grille[i+1][j] == "E" || grille[i+1][j] == "A" || grille[i+1][j] == "M"){
+						
+						collisionObstacle();
+						return;
+						
+					}
+
+
+				}
+				// intrus 1
+				if(grille[i][j] == "I"){// on cherche l'intrus
+					if(i+1 <= nbLigne && grille[i+1][j] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i+1][j] = vi; // on déplace l'intrus
+						return;
+						
+					}if(i+1 <= nbLigne && grille[i+1][j] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <= nbLigne && grille[i+1][j] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne && grille[i+1][j] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne && grille[i+1][j] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne || grille[i+1][j] == "E" || grille[i+1][j] == "A" || grille[i+1][j] == "M"){
+						
+						collisionObstacle();
+						return;
+						
+					}
+
+
+				}
+				// intrus 2
+				if(grille[i][j] == "R"){// on cherche l'intrus
+					if(i+1 <= nbLigne && grille[i+1][j] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i+1][j] = vi; // on déplace l'intrus
+						return;
+						
+					}if(i+1 <= nbLigne && grille[i+1][j] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <= nbLigne && grille[i+1][j] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne && grille[i+1][j] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne && grille[i+1][j] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne || grille[i+1][j] == "E" || grille[i+1][j] == "A" || grille[i+1][j] == "M"){
+						
+						collisionObstacle();
+						return;
+						
+					}
+
+
+				}
+				// intrus 3
+				if(grille[i][j] == "D"){// on cherche l'intrus
+					if(i+1 <= nbLigne && grille[i+1][j] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i+1][j] = vi; // on déplace l'intrus
+						return;
+						
+					}if(i+1 <= nbLigne && grille[i+1][j] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}if(i+1 <= nbLigne && grille[i+1][j] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne && grille[i+1][j] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne && grille[i+1][j] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						return;
+						
+					}
+					if(i+1 <= nbLigne || grille[i+1][j] == "E" || grille[i+1][j] == "A" || grille[i+1][j] == "M"){
+						
+						collisionObstacle();
+						return;
+						
+					}
+
+
+				}
+
+			}
+
+		}
+	
+	}
+	
+	// methode qui permet de déplacer les personnage mobiles vers la gauche
+	public void deplacerGauche(){
+		
+		choixGardien1 = true;
+		
+		String vi ; // valeur intermédiaire
+		for(int i = 0;i<nbLigne;i++){
+			for(int j = 0;j<nbColonne;j++){
+				// gardien 1
+				if(grille[i][j] == "G" && choixGardien1){ // on cherche un gardien
+					if(j-1 >=0 && grille[i][j-1] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; //on vide la case
+						grille[i][j-1] = vi; // on déplace le gardien
+						
+					}if(j-1 >=0 && grille[i][j-1] == "I"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "R"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "D"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}
+					if(j-1 >=0 || grille[i][j-1] == "E" || grille[i][j-1] == "A" || grille[i][j-1] == "M"){
+						
+						collisionObstacle();
+						
+					}
+
+				}
+				// gardien 2
+				if(grille[i][j] == "S" && choixGardien2){ // on cherche un gardien
+					if(j-1 >=0 && grille[i][j-1] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; //on vide la case
+						grille[i][j-1] = vi; // on déplace le gardien
+						
+					}if(j-1 >=0 && grille[i][j-1] == "I"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "R"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "D"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}
+					if(j-1 >=0 || grille[i][j-1] == "E" || grille[i][j-1] == "A" || grille[i][j-1] == "M"){
+						
+						collisionObstacle();
+						
+					}
+
+				}
+				// gardien 3
+				if(grille[i][j] == "C" && choixGardien3){ // on cherche un gardien
+					if(j-1 >=0 && grille[i][j-1] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; //on vide la case
+						grille[i][j-1] = vi; // on déplace le gardien
+						
+					}if(j-1 >=0 && grille[i][j-1] == "I"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "R"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "D"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}
+					if(j-1 >=0 || grille[i][j-1] == "E" || grille[i][j-1] == "A" || grille[i][j-1] == "M"){
+						
+						collisionObstacle();
+						
+					}
+
+				}
+				// gardien 4
+				if(grille[i][j] == "P" && choixGardien4){ // on cherche un gardien
+					if(j-1 >=0 && grille[i][j-1] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; //on vide la case
+						grille[i][j-1] = vi; // on déplace le gardien
+						
+					}if(j-1 >=0 && grille[i][j-1] == "I"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "R"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "D"){
+						grille[i][j-1] = " ";
+						collisionReperage();
+						
+					}
+					if(j-1 >=0 || grille[i][j-1] == "E" || grille[i][j-1] == "A" || grille[i][j-1] == "M"){
+						
+						collisionObstacle();
+						
+					}
+
+				}
+				
+				// intrus 1
+				if(grille[i][j] == "I"){// on cherche l'intrus
+					if(j-1 >=0 && grille[i][j-1] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i][j-1] = vi; // on déplace l'intrus
+						
+					}if(j-1 >=0 && grille[i][j-1] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}
+					if(j-1 >=0 || grille[i][j-1] == "E" || grille[i][j-1] == "A" || grille[i][j-1] == "M"){
+						
+						collisionObstacle();
+						
+					}
+
+				}
+				// intrus 2
+				if(grille[i][j] == "R"){// finding intruder
+					if(j-1 >=0 && grille[i][j-1] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i][j-1] = vi; // on déplace l'intrus
+						
+					}if(j-1 >=0 && grille[i][j-1] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}
+					if(j-1 >=0 || grille[i][j-1] == "E" || grille[i][j-1] == "A" || grille[i][j-1] == "M"){
+						
+						collisionObstacle();
+						
+					}
+
+				}
+				// intrus 3 
+				if(grille[i][j] == "D"){// on cherche l'intrus
+					if(j-1 >=0 && grille[i][j-1] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i][j-1] = vi; // on déplace l'intrus
+						
+					}if(j-1 >=0 && grille[i][j-1] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}if(j-1 >=0 && grille[i][j-1] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						
+					}
+					if(j-1 >=0 || grille[i][j-1] == "E" || grille[i][j-1] == "A" || grille[i][j-1] == "M"){
+						
+						collisionObstacle();
+						
+					}
+
+				}
+
+			}
+
+		}
+	
+	}
+	
+	// methode qui permet de déplacer les personnage mobiles vers la droite
+	
+	public void deplacerDroite(){
+		
+		choixGardien1 = true;
+		
+		String vi ;
+		for(int i = 0;i<nbLigne;i++){
+			for(int j = 0;j<nbColonne;j++){
+				if(grille[i][j] == "G" && choixGardien1){ // on cherche un gardien
+					if(j+1 <=nbColonne && grille[i][j+1] == " "){ // on teste la position du gardien
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i][j+1] = vi; // on déplace le gardien
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "I"){
+						grille[i][j+1] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "R"){
+						grille[i][j+1] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "D"){
+						grille[i][j+1] = " ";
+						collisionReperage();
+						break;
+						
+					}
+					if(j+1 <=nbColonne || grille[i][j+1] == "E" || grille[i][j+1] == "A" || grille[i][j+1] == "M"){
+						
+						collisionObstacle();
+						break;
+					}
+					
+				}
+				// gardien 2
+				if(grille[i][j] == "S" && choixGardien2){ // finding player
+						if(j+1 <=nbColonne && grille[i][j+1] == " "){ // on teste la position du gardien
+							vi = grille[i][j];
+							grille[i][j] = " "; // on vide la case
+							grille[i][j+1] = vi; // on déplace le gardien
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "I"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "R"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "D"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}
+						if(j+1 <=nbColonne || grille[i][j+1] == "E" || grille[i][j+1] == "A" || grille[i][j+1] == "M"){
+							
+							collisionObstacle();
+							break;
+						}
+					
+				}
+				// gardien 3
+				if(grille[i][j] == "C" && choixGardien3){ // on cherche un gardien
+						if(j+1 <=nbColonne && grille[i][j+1] == " "){ // on teste la position du gardien
+							vi = grille[i][j];
+							grille[i][j] = " "; // on vide la case
+							grille[i][j+1] = vi; // on déplace le gardien
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "I"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "R"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "D"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}
+						if(j+1 <=nbColonne || grille[i][j+1] == "E" || grille[i][j+1] == "A" || grille[i][j+1] == "M"){
+							
+							collisionObstacle();
+							break;
+						}
+					
+				}
+				
+				// gardien 4
+				if(grille[i][j] == "P" && choixGardien4){ // on cherche un gardien
+						if(j+1 <=nbColonne && grille[i][j+1] == " "){ // on teste la position du gardien
+							vi = grille[i][j];
+							grille[i][j] = " "; // on vide la case
+							grille[i][j+1] = vi; // on déplace le gardien
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "I"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "R"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}if(j+1 <=nbColonne && grille[i][j+1] == "D"){
+							grille[i][j+1] = " ";
+							collisionReperage();
+							break;
+							
+						}
+						if(j+1 <=nbColonne || grille[i][j+1] == "E" || grille[i][j+1] == "A" || grille[i][j+1] == "M"){
+							
+							collisionObstacle();
+							break;
+						}
+					
+				}
+				
+				// intrus 1
+				
+				if(grille[i][j] == "I"){// on cherche l'intrus
+					if(j+1 <=nbColonne && grille[i][j+1] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i][j+1] = vi; // on déplace l'intrus
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}
+					if(j+1 <=nbColonne || grille[i][j+1] == "E" || grille[i][j+1] == "A" || grille[i][j+1] == "M"){
+						
+						collisionObstacle();
+						break;
+					}
+
+				}
+				
+				// intrus 2
+				if(grille[i][j] == "R"){// on cherche l'intrus
+					if(j+1 <=nbColonne && grille[i][j+1] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i][j+1] = vi; // on déplace l'intrus
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}
+					if(j+1 <=nbColonne || grille[i][j+1] == "E" || grille[i][j+1] == "A" || grille[i][j+1] == "M"){
+						
+						collisionObstacle();
+						break;
+					}
+
+				}
+				// intrus 3
+				if(grille[i][j] == "D"){// on cherche l'intrus
+					if(j+1 <=nbColonne && grille[i][j+1] == " "){// on teste la position de l'intrus
+						vi = grille[i][j];
+						grille[i][j] = " "; // on vide la case
+						grille[i][j+1] = vi; // on déplace l'intrus
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "G"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "S"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "C"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}if(j+1 <=nbColonne && grille[i][j+1] == "P"){
+						grille[i][j] = " ";
+						collisionReperage();
+						break;
+						
+					}
+					if(j+1 <=nbColonne || grille[i][j+1] == "E" || grille[i][j+1] == "A" || grille[i][j+1] == "M"){
+						
+						collisionObstacle();
+						break;
+					}
+
+				}
+			}
+
+		}
+		
+	}
+	
+	// methode qui permet de déplacer aléatoirement les personnage mobiles
+	public void deplacerAleatoire(){
+		choixGardien1 = true; choixGardien2 = true; choixGardien3= true; choixGardien4 = true;
+		int i=0;
+		
+		//(int)(Math.random()*4+1);
+		while(i<100){
+			
+			// choix nombre compris entre 1 et 4
+			int choix = (int)(Math.random()*4+1);
+			
+			switch (choix){
+			
+			case 1 : deplacerHaut();
+			break ; 
+							
+			case 2 : deplacerBas();
+			break ; 
+							
+			case 3 : deplacerGauche();
+			break ; 
+							
+			case 4 : deplacerDroite();
+			break ;  
+						
+			default : System.out.println("Erreur!! Choisissez un autre nombre!");
+			
+			}
+			
+			try {
+				// rafraichit l'écran
+				Runtime.getRuntime().exec("cmd /c cls");
+				Thread.sleep(2000);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+			
+			// met à jour la grille
+			affichage();
+			i++;
+			
+		}
+		
+	}
+	
+	// methode qui permet de déplacer manuellement les personnage mobiles et choisir son gardien
+	public void deplacementManuel(){
+		
+		int i=0;
+		
+		//String str = sc1.nextLine();
+		
+		//(int)(Math.random()*4+1);
+		while(i<100){
+			
+			System.out.println("Quelle direction pour diriger le gardien ?\n\n1 : haut\n2 : bas \n3 : gauche\n4 : droite\n5 : choisir un autre gardien\n6 : quitter ");
+			Scanner sc1 = new Scanner(System.in);
+			int choix = sc1.nextInt() ;
+			
+			switch (choix){
+			
+			case 1 : deplacerHaut(); 
+			break ; 
+							
+			case 2 : deplacerBas();
+			break ; 
+							
+			case 3 : deplacerGauche();
+			break ; 
+							
+			case 4 : deplacerDroite();
+			break ; 
+			// permet de choisir son gardien
+			case 5 : System.out.println("Choississez votre gardien\n\n1 : gardien G\n2 : gardien S\n3 : gardien C\n4 : gardien P");
+			Scanner sc2 = new Scanner(System.in);
+			int choix1 = sc2.nextInt() ;
+			switch (choix1){
+			
+			case 1 : choixGardien1 = true; choixGardien2 = false;choixGardien3 = false;choixGardien4 = false;
+			break;
+			
+			case 2 : choixGardien1 = false; choixGardien2 = true;choixGardien3 = false;choixGardien4 = false;
+			break;
+			
+			case 3 : choixGardien1 = false; choixGardien2 = false;choixGardien3 = true;choixGardien4 = false;
+			break;
+			
+			case 4 : choixGardien1 = false; choixGardien2 = false;choixGardien3 = false;choixGardien4 = true;
+			break;
+			
+			default : System.out.println("Erreur!! Choisissez un autre nombre!");
+			}
+			break ;
+			
+			case 6 :i=100 ; 
+			break ;
+						
+			default : System.out.println("Erreur!! Choisissez un autre nombre!");
+			
+			}
+			try {
+				// rafraichit l'écran
+				Runtime.getRuntime().exec("cmd /c cls");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// met à jour la grille
+			affichage();
+			i++;
+			
+		}
+		
+	}
+	
+	// methode qui signale une collision
+	public void collisionReperage(){
+		
+		System.out.println("\n Alerte collision! Le Gardien a repéré et attrapé un intrus!!");
+		
+	}
+
+	// methode qui signale une collision
+	public void collisionObstacle(){
+		
+		System.out.println("\n Alerte collision! Le gardien ou l'intrus ne peut pas franchir cet obstacle!");
+	
+	}
+	
+	
+	
+	
+	
+	
+
+}

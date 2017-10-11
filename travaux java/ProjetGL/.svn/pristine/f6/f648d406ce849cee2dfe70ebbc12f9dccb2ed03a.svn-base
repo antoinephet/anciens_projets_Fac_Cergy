@@ -1,0 +1,734 @@
+package genie;
+
+import java.awt.Graphics2D;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Grille {
+
+	private int nbLigne ;
+	private int nbColonne ; 
+	private int cases ;
+	private int nbIntrus ;
+	 
+	private ArrayList<Gardien> gardiens = new ArrayList<Gardien>();
+	private ArrayList<GardienConsole> gardiensBis = new ArrayList<GardienConsole>();
+	private ArrayList<Intrus> intrus = new ArrayList<Intrus>();
+	private ArrayList<Mur> murs = new ArrayList<Mur>();
+	private ArrayList <Arbre > arbres = new ArrayList<Arbre>();
+	private ArrayList<Eau> eaux = new ArrayList<Eau>();
+	private char [][] grille;
+	Intrus tempIntrus;
+	Gardien tempGardien;
+	Mur tempMur;
+	Arbre tempArbre;
+	Eau tempEau;
+	
+	public Grille(int nbLigne, int nbColonne, int nbIntrus) {
+		this.nbLigne = nbLigne;
+		this.nbColonne = nbColonne;
+		this.nbIntrus = nbIntrus;
+	}
+	
+	public Grille  (int lig , int col){
+		nbLigne= lig ;
+		nbColonne = col ;
+		
+		grille = new char[nbLigne][nbColonne];
+		// ligne de murs horizontal situés en haut de l'écran
+		addMur(new Mur(0,0));
+		addMur(new Mur(34,0));
+		addMur(new Mur(68,0));
+		addMur(new Mur(102,0));
+		addMur(new Mur(136,0));
+		addMur(new Mur(170,0));
+		addMur(new Mur(204,0));
+		addMur(new Mur(238,0));
+		addMur(new Mur(272,0));
+		addMur(new Mur(306,0));
+		addMur(new Mur(340,0));
+		addMur(new Mur(374,0));
+		addMur(new Mur(408,0));
+		addMur(new Mur(442,0));
+		addMur(new Mur(476,0));
+		addMur(new Mur(510,0));
+		addMur(new Mur(544,0));
+		addMur(new Mur(578,0));
+		addMur(new Mur(612,0));
+		addMur(new Mur(646,0));
+		addMur(new Mur(680,0));
+		addMur(new Mur(714,0));
+		addMur(new Mur(748,0));
+		addMur(new Mur(782,0));
+		addMur(new Mur(816,0));
+		addMur(new Mur(850,0));
+		addMur(new Mur(884,0));
+		addMur(new Mur(918,0));
+		addMur(new Mur(952,0));
+		addMur(new Mur(986,0));
+		addMur(new Mur(1020,0));
+		addMur(new Mur(1054,0));
+		addMur(new Mur(1088,0));
+		addMur(new Mur(1122,0));
+		
+		// ligne de murs horizontal situés en bas de l'écran
+		addMur(new Mur(34,646));
+		addMur(new Mur(68,646));
+		addMur(new Mur(102,646));
+		addMur(new Mur(136,646));
+		addMur(new Mur(170,646));
+		addMur(new Mur(204,646));
+		addMur(new Mur(238,646));
+		addMur(new Mur(272,646));
+		addMur(new Mur(306,646));
+		addMur(new Mur(340,646));
+		addMur(new Mur(374,646));
+		addMur(new Mur(408,646));
+		addMur(new Mur(442,646));
+		addMur(new Mur(476,646));
+		addMur(new Mur(510,646));
+		addMur(new Mur(544,646));
+		addMur(new Mur(578,646));
+		addMur(new Mur(612,646));
+		addMur(new Mur(646,646));
+		addMur(new Mur(680,646));
+		addMur(new Mur(714,646));
+		addMur(new Mur(748,646));
+		addMur(new Mur(782,646));
+		addMur(new Mur(816,646));
+		addMur(new Mur(850,646));
+		addMur(new Mur(884,646));
+		addMur(new Mur(918,646));
+		addMur(new Mur(952,646));
+		addMur(new Mur(986,646));
+		addMur(new Mur(1020,646));
+		addMur(new Mur(1054,646));
+		addMur(new Mur(1122,646));
+		
+		
+		// ligne de murs vertical situés a gauche de l'écran
+		addMur(new Mur(0,34));
+		addMur(new Mur(0,68));
+		addMur(new Mur(0,102));
+		addMur(new Mur(0,136));
+		addMur(new Mur(0,170));
+		addMur(new Mur(0,204));
+		addMur(new Mur(0,238));
+		addMur(new Mur(0,272));
+		addMur(new Mur(0,306));
+		addMur(new Mur(0,340));
+		addMur(new Mur(0,374));
+		addMur(new Mur(0,408));
+		addMur(new Mur(0,442));
+		addMur(new Mur(0,476));
+		addMur(new Mur(0,510));
+		addMur(new Mur(0,544));
+		addMur(new Mur(0,578));
+		addMur(new Mur(0,612));
+		addMur(new Mur(0,646)); //
+		addMur(new Mur(0,680));
+		addMur(new Mur(0,714));
+		
+		// ligne de murs vertical situés a droite de l'écran
+		addMur(new Mur(1088,34));
+		addMur(new Mur(1088,68));
+		addMur(new Mur(1088,102));
+		addMur(new Mur(1088,136));
+		addMur(new Mur(1088,170));
+		addMur(new Mur(1088,204));
+		addMur(new Mur(1088,238));
+		addMur(new Mur(1088,272));
+		addMur(new Mur(1088,306));
+		addMur(new Mur(1088,340));
+		addMur(new Mur(1088,374));
+		addMur(new Mur(1088,408));
+		addMur(new Mur(1088,442));
+		addMur(new Mur(1088,476));
+		addMur(new Mur(1088,510));
+		addMur(new Mur(1088,544));
+		addMur(new Mur(1088,578));
+		addMur(new Mur(1088,612));
+		addMur(new Mur(1088,646)); //
+		addMur(new Mur(1088,680));
+		addMur(new Mur(1088,714));
+		
+		// ajout des arbres
+		// arbres en haut a gauche
+		addArbre(new Arbre(34,34));
+		addArbre(new Arbre(34,68));
+		addArbre(new Arbre(34,102));
+		addArbre(new Arbre(34,136));
+		addArbre(new Arbre(68,34));
+		addArbre(new Arbre(68,68));
+		addArbre(new Arbre(68,102));
+		addArbre(new Arbre(68,136));
+		addArbre(new Arbre(102,34));
+		addArbre(new Arbre(102,68));
+		addArbre(new Arbre(136,34));
+		addArbre(new Arbre(136,68));
+		
+		// arbres en bas a gauche
+		addArbre(new Arbre(34,510));
+		addArbre(new Arbre(34,544));
+		addArbre(new Arbre(34,578));
+		addArbre(new Arbre(34,612));
+		addArbre(new Arbre(68,510));
+		addArbre(new Arbre(68,544));
+		addArbre(new Arbre(68,578));
+		addArbre(new Arbre(68,612));
+		addArbre(new Arbre(102,578));
+		addArbre(new Arbre(102,612));
+		addArbre(new Arbre(136,578));
+		addArbre(new Arbre(136,612));
+		addArbre(new Arbre(170,578));
+		addArbre(new Arbre(170,612));
+		
+		// arbres en bas a droite
+		addArbre(new Arbre(918,578));
+		addArbre(new Arbre(918,612));
+		addArbre(new Arbre(952,578));
+		addArbre(new Arbre(952,612));
+		addArbre(new Arbre(986,578));
+		addArbre(new Arbre(986,612));
+		addArbre(new Arbre(1020,510));
+		addArbre(new Arbre(1020,544));
+		addArbre(new Arbre(1020,578));
+		addArbre(new Arbre(1020,612));
+		addArbre(new Arbre(1054,510));
+		addArbre(new Arbre(1054,544));
+		addArbre(new Arbre(1054,578));
+		addArbre(new Arbre(1054,612));
+		
+		// arbres en haut a droite
+		addArbre(new Arbre(918,34));
+		addArbre(new Arbre(918,68));
+		addArbre(new Arbre(952,34));
+		addArbre(new Arbre(952,68));
+		addArbre(new Arbre(986,34));
+		addArbre(new Arbre(986,68));
+		addArbre(new Arbre(1020,34));
+		addArbre(new Arbre(1020,68));
+		addArbre(new Arbre(1020,102));
+		addArbre(new Arbre(1020,136));
+		addArbre(new Arbre(1054,34));
+		addArbre(new Arbre(1054,68));
+		addArbre(new Arbre(1054,102));
+		addArbre(new Arbre(1054,136));
+		
+		
+		addEau(new Eau(136, 272));
+		addEau(new Eau(136, 306));
+		addEau(new Eau(136, 340));
+		addEau(new Eau(136, 374));
+		addEau(new Eau(136, 408));
+		addEau(new Eau(170, 272));
+		addEau(new Eau(170, 306));
+		addEau(new Eau(170, 340));
+		addEau(new Eau(170, 374));
+		addEau(new Eau(170, 408));
+		
+		// ajout des gardiens et des intrus
+		addIntrus(new Intrus(400,300));
+		addIntrus(new Intrus(500,360));
+		addIntrus(new Intrus(600,400));
+		addIntrus(new Intrus(700,430));
+		addGardien(new Gardien(450,200));
+		addGardien(new Gardien(500,230));
+		
+		for (int i=0  ; i<nbLigne ; i++){
+			for(int j=0 ; j<nbColonne ; j++){
+				grille[i][j] = '-' ;
+				
+				
+			}
+		}
+	}
+	
+	
+	public void afficher() {
+		// TODO Auto-generated method stub
+		
+		System.out.println();
+		for (int i=0  ; i<nbLigne ; i++){
+			for(int j=0 ; j<nbColonne ; j++){
+				System.out.print(" |  " + grille[i][j] );
+				
+			}
+			System.out.println(" | ");
+		
+		} 
+		System.out.println();
+		
+		
+	}
+	
+	
+	public int getCases(int lign , int colo) {
+		return  grille[lign-1][colo-1] ;
+	}
+
+	public void setCases(int cases) {
+		this.cases = cases;
+	}
+
+	public int getNbLigne() {
+		return nbLigne;
+	}
+
+
+	public int getNbColonne() {
+		return nbColonne;
+	}
+
+
+	public int getNbIntrus() {
+		return nbIntrus;
+	}
+
+
+	
+	public void placerIntrus(int lign , int colo , char intrus ){
+	    
+		lign = lign - 1 ; 
+		colo = colo - 1 ; 
+		
+		
+		if(lign<0 || colo<0 || lign >nbLigne|| colo > nbColonne ){
+			System.out.println("erreur");
+			return;
+		}
+		if ( grille[lign][colo]=='-'){
+			
+			grille[lign][colo] = intrus ;
+			
+		}
+		else {
+			
+			System.out.println("case vide");
+			return ;
+		}
+	}
+	public void placerGardien (int lign , int colo , char gardien ){
+	    
+		lign = lign - 1 ; 
+		colo = colo - 1 ; 
+		
+		
+		if(lign<0 || colo<0 || lign >nbLigne|| colo > nbColonne ){
+			System.out.println("erreur");
+			return;
+		}
+		
+		if ( grille[lign][colo]=='-'){
+			
+			grille[lign][colo] = gardien ;
+			
+			
+		}
+		
+		else {
+			
+			System.out.println("case vide");
+			return ;
+		}
+	}
+		public void placerObjet (int lign , int colo , char gardien ){
+		    
+			lign = lign - 1 ; 
+			colo = colo - 1 ; 
+			
+			
+			if(lign<0 || colo<0 || lign >nbLigne|| colo > nbColonne ){
+				System.out.println("erreur");
+				return;
+			}
+			
+			if ( grille[lign][colo]=='-'){
+				
+				grille[lign][colo] = gardien ;
+				
+				
+			}
+			
+			else {
+				
+				System.out.println("case vide");
+				return ;
+			
+			}
+		}	
+		
+		public void deplacerVersLeHaut(){
+			char tmp ;
+			
+			for(int i = 0;i<nbLigne;i++){
+
+				for(int j = 0;j<nbColonne;j++){
+					if(grille[i][j] == 'G'){ // on cherche le joueur
+						if(i-1 >=0 && grille[i-1][j] == '-'){ // on teste la position du joueur
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i-1][j] = tmp; // on déplace le perso
+							
+						}
+						
+					}
+					if(grille[i][j] == 'I'){// on cherche l'intrus
+						if(i-1 >=0 && grille[i-1][j] == '-'){// on teste la position de l'intrus
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i-1][j] = tmp; // on déplace le perso
+							
+						}
+
+					}
+					
+				}
+			}
+			
+		}
+		
+		public void deplacerVersLeBas(){
+			char tmp ;
+			for(int i = 0;i<nbLigne;i++){
+				for(int j = 0;j<nbColonne;j++){
+					
+					if(grille[i][j] == 'G'){ // on cherche le joueur
+						if(i+1 <= nbLigne && grille[i+1][j] == '-'){ // on teste la position du joueur
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i+1][j] = tmp; // on déplace le perso
+							return;
+						}
+
+					}
+					if(grille[i][j] == 'I'){// on cherche l'intrus
+						if(i+1 <= nbLigne && grille[i+1][j] == '-'){// on teste la position de l'intrus
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i+1][j] = tmp; // on déplace le perso
+							return;
+							
+						}
+
+					}
+
+				}
+
+			}
+			
+		}
+		public void deplacerDroite(){
+			char tmp ;
+			for(int i = 0;i<nbLigne;i++){
+				for(int j = 0;j<nbColonne;j++){
+					if(grille[i][j] == 'G'){ // on cherche le joueur
+						if(j+1 <=nbColonne && grille[i][j+1] == '-'){ // on teste la position du joueur
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i][j+1] = tmp; // on déplace le perso
+							break;
+							
+						}
+						
+					}
+					if(grille[i][j] == 'I'){// on cherche l'intrus
+						if(j+1 <=nbColonne && grille[i][j+1] == '-'){// on teste la position de l'intrus
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i][j+1] = tmp; // on déplace le perso
+							break;
+							
+						}
+
+					}
+				}
+
+			}
+			
+		}
+		
+		public void deplacerGauche(){
+			char tmp ;
+			for(int i = 0;i<nbLigne;i++){
+				for(int j = 0;j<nbColonne;j++){
+					if(grille[i][j] == 'G'){ // on cherche le joueur
+						if(j-1 >=0 && grille[i][j-1] == '-'){ // on teste la position du joueur
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i][j-1] = tmp; // on déplace le perso
+							
+						}
+
+					}
+					if(grille[i][j] == 'I'){// on cherche l'intrus
+						if(j-1 >=0 && grille[i][j-1] == '-'){// on teste la position de l'intrus
+							tmp = grille[i][j];
+							grille[i][j] = '-'; // on vide la case
+							grille[i][j-1] = tmp; // on déplace le perso
+							
+						}
+
+					}
+
+				}
+
+			}
+			
+		}
+		
+			//déplacement aléatoire des intrus 
+			
+			public void deplacerAleatoire(){
+				
+				int i=0;
+				
+				//(int)(Math.random()*4+1);
+				while(i<100){
+					
+					// chiffre aléatoire compris entre 1 et 4
+					int cmpt = (int)(Math.random()*4+1);
+					
+					switch (cmpt){
+					
+					case 1 : deplacerVersLeHaut(); 
+					break ; 
+									
+					case 2 : deplacerVersLeBas();
+					break ; 
+									
+					case 3 : deplacerDroite();
+					break ; 
+									
+					case 4 : deplacerGauche();
+					break ;  
+								
+					default : System.out.println("Erreur!! Choisissez un autre chiffre svp");
+					
+					}
+					
+					try {
+						// rafraichit l'écran de la console
+						Runtime.getRuntime().exec("cmd /c cls");
+						Thread.sleep(2000);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					// met à jour l'affichage de la grille
+					afficher();
+					i++;
+					
+				}
+				
+			}
+			
+			// demande manuelle pour les déplacements des éléments
+			public void deplacerManuel(){
+				
+				int i=0;
+				
+				//String str = sc1.nextLine();
+				
+				//(int)(Math.random()*4+1);
+				while(i<5){
+					
+					System.out.println("Vers où voulez vous vous deplacer ?\n\n1 : vers le haut\n2 : vers le bas \n3 : vers la droite\n4 : vers la gauche\n5 : quitter ");
+					Scanner sc1 = new Scanner(System.in);
+					int cmpt = sc1.nextInt() ;
+					
+					switch (cmpt){
+					
+					case 1 : deplacerVersLeHaut(); 
+					break ; 
+									
+					case 2 : deplacerVersLeBas();
+					break ; 
+									
+					case 3 : deplacerDroite();
+					break ; 
+									
+					case 4 : deplacerGauche();
+					break ; 
+					
+					case 5 :i=5 ; 
+					break ; 
+								
+					default : System.out.println("Erreur!! Choisissez un autre chiffre svp");
+					
+					}
+					try {
+						// rafraichit l'écran de la console 
+						Runtime.getRuntime().exec("cmd /c cls");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					// met à jour l'affichage de la grille
+					afficher();
+					i++;
+					
+				}
+				
+		}
+			
+			public void update(){
+				// mise en place des ennemis
+				for(int i = 0;i < intrus.size();i++){
+					tempIntrus = intrus.get(i);
+					
+					// si les ennemis atteignent le point x = 20, ils disparaissent
+					/*if(tempIntrus.x < 20){
+						removeIntrus(tempIntrus);
+						
+					}*/
+					tempIntrus.update();
+					
+				}
+				
+				for(int b = 0;b < gardiens.size();b++){
+					tempGardien = gardiens.get(b);
+					
+					
+					tempGardien.update();
+					
+				}
+				
+				for(int a = 0;a < murs.size();a++){
+					tempMur = murs.get(a);
+					
+					
+					tempMur.update();
+					
+				}
+				
+				for(int a = 0;a < eaux.size();a++){
+					tempEau = eaux.get(a);
+					
+					
+					tempEau.update();
+					
+				}
+				
+				for(int a = 0;a < arbres.size();a++){
+					tempArbre = arbres.get(a);
+					
+					
+					tempArbre.update();
+					
+				}
+			}
+			
+			
+			public void draw(Graphics2D g2d){
+				
+				// dessine les intrus
+				for(int i = 0;i < intrus.size();i++){
+					
+					tempIntrus = intrus.get(i);
+					tempIntrus.draw(g2d);
+				}
+				
+				// dessine les gardiens
+				for(int i = 0;i < gardiens.size();i++){
+					
+					tempGardien = gardiens.get(i);
+					tempGardien.draw(g2d);
+				}
+				
+				// dessine les murs
+				for(int i = 0;i < murs.size();i++){
+					
+					tempMur = murs.get(i);
+					tempMur.draw(g2d);
+				}
+				// dessine les arbres
+				for(int i = 0;i < arbres.size();i++){
+					
+					tempArbre = arbres.get(i);
+					tempArbre.draw(g2d);
+				}
+				
+				// dessine les eaux
+				for(int i = 0;i < eaux.size();i++){
+					
+					tempEau = eaux.get(i);
+					tempEau.draw(g2d);
+				}
+				
+			}
+			
+			public void addIntrus(Intrus i){
+				intrus.add(i);
+				
+			}
+			
+			public void removeIntrus(Intrus i){
+				
+				intrus.remove(i);
+				
+			}
+			
+			public void addGardien(Gardien i){
+				gardiens.add(i);
+				
+			}
+			
+			public void removeGardien(Gardien i){
+				
+				gardiens.remove(i);
+				
+			}
+			public void addGardienConsole(GardienConsole i){
+				gardiensBis.add(i);
+				
+			}
+			
+			public void removeGardienConsole(GardienConsole i){
+				
+				gardiensBis.remove(i);
+				
+			}
+			
+			public void addMur(Mur i){
+				murs.add(i);
+				
+			}
+			
+			public void removeMur(Mur i){
+				
+				murs.remove(i);
+				
+			}
+			public void addArbre(Arbre i){
+				arbres.add(i);
+				
+			}
+			
+			public void removeArbre(Arbre i){
+				
+				arbres.remove(i);
+				
+			}
+			public void addEau(Eau i){
+				eaux.add(i);
+				
+			}
+			
+			public void removeEau(Eau i){
+				
+				eaux.remove(i);
+				
+			}
+
+
+
+}
+
+

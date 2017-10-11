@@ -1,0 +1,45 @@
+package test;
+
+import java.awt.Graphics2D;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public class Mur extends ChoseAbstrait{
+	
+	private Image mur;
+	private ImageIcon iMur = new ImageIcon("images/mur.jpg");
+
+	public Mur(int x, int y) {
+		super(x, y);
+		// TODO Auto-generated constructor stub
+		mur = iMur.getImage();
+		
+		
+	}
+	
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public void draw(Graphics2D g2d) {
+		g2d.drawImage(getMur(),x,y, null);
+	}
+	
+	public Image getMur(){
+		
+		return mur;
+		
+	}
+	
+
+}

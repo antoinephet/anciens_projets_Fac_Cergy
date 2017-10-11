@@ -1,0 +1,28 @@
+\documentclass[11pt]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\begin{document}
+
+\includegraphics{imageJava.jpg}
+
+\input{titre.tex}
+\tableofcontents
+\input{introduction.tex}
+\input{implementation.tex}
+\input{specification.tex}
+%\input{fonctionnalité.tex}
+\section{Amelioration}
+placer une grille derrière le jeu
+fais des jeux en 3D
+creation d'annimation
+
+\input{conclusion.tex}
+
+
+\end{document}

@@ -1,0 +1,13 @@
+package genie;
+
+public class JeuGardienParc {
+	
+	private Grille grille;
+	
+	public JeuGardienParc(Grille grille) {
+		
+		this.grille = grille;
+		
+	}
+
+}

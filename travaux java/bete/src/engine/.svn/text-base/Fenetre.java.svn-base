@@ -1,0 +1,165 @@
+package engine;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
+
+import data.Grille;
+
+public class Fenetre extends JFrame {
+
+	private int nbBete;
+	private int nbCase;
+	private Grille grille;
+	private JPanel dessin[][];
+	private JPanel panneau;
+
+	public Fenetre(int nbBete, int nbCase) {
+
+		super("animation");
+
+		this.nbBete = nbBete;
+		this.nbCase = nbCase;
+
+		grille = new Grille(nbBete, nbCase);
+		dessin = new JPanel[nbCase][nbCase];
+		panneau = new JPanel();
+
+		setContentPane(panneau);
+		
+		setLocationRelativeTo(null);
+		pack();
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setSize(500, 500);
+
+		environnement();
+	}
+	
+	public void environnement(){
+		for (int z = 0; z < 100; z++) {
+
+			panneau.removeAll();
+
+			ImageIcon imageIconMale = new ImageIcon("images/bête_mâle.png");
+
+			ImageIcon imageIconFemelle = new ImageIcon(
+					"images/bête_femelle.png");
+
+			ImageIcon iconMale = new ImageIcon(imageIconMale.getImage()
+					.getScaledInstance(25, 25, 0));
+
+			ImageIcon iconFemelle = new ImageIcon(imageIconFemelle.getImage()
+					.getScaledInstance(25, 25, 0));
+
+			panneau.setLayout(new GridLayout(nbCase, nbCase));
+
+			for (int i = 0; i < nbCase; i++) {
+				for (int j = 0; j < nbCase; j++) {
+
+					dessin[i][j] = new JPanel();
+
+					if (grille.nbBeteCase(i, j) == 2) {
+
+						if (grille.getCase(i, j).getCouple() == 2) {
+
+							dessin[i][j].setLayout(new GridLayout(1, 2));
+
+							JLabel label = new JLabel(iconMale);
+
+							JLabel label1 = new JLabel(iconMale);
+
+							dessin[i][j].add(label);
+							dessin[i][j].add(label1);
+
+						} else {
+							if (grille.getCase(i, j).getCouple() == 4) {
+
+								dessin[i][j].setLayout(new GridLayout(1, 2));
+
+								JLabel label = new JLabel(iconMale);
+
+								JLabel label1 = new JLabel(iconFemelle);
+
+								dessin[i][j].add(label);
+								dessin[i][j].add(label1);
+
+							} else {
+								if (grille.getCase(i, j).getCouple() == 6) {
+
+									dessin[i][j]
+											.setLayout(new GridLayout(1, 2));
+
+									JLabel label = new JLabel(iconFemelle);
+
+									JLabel label1 = new JLabel(iconFemelle);
+
+									dessin[i][j].add(label);
+									dessin[i][j].add(label1);
+
+								}
+							}
+						}
+
+					} else {
+
+						if (grille.nbBeteCase(i, j) == 1) {
+
+							if (grille.getCase(i, j).getCouple() == 1) {
+
+								dessin[i][j].setLayout(new GridLayout(1, 2));
+
+								JLabel label = new JLabel(iconMale);
+
+								dessin[i][j].add(label);
+
+							} else {
+								if (grille.getCase(i, j).getCouple() == 3) {
+
+									dessin[i][j]
+											.setLayout(new GridLayout(1, 2));
+
+									JLabel label = new JLabel(iconFemelle);
+
+									dessin[i][j].add(label);
+
+								}
+							}
+
+						} else {
+
+							JLabel label = new JLabel();
+							dessin[i][j].add(label);
+						}
+					}
+
+					dessin[i][j].setBorder(BorderFactory
+							.createLineBorder(Color.black));
+					panneau.add(dessin[i][j]);
+
+				}
+
+			}
+
+			grille.deplacement();
+
+			panneau.updateUI();
+
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

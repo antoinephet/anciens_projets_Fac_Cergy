@@ -1,0 +1,23 @@
+package model;
+
+/*import model.TreeVisitor;
+
+public class typeObstacle {
+
+public interface Obstacle {
+
+	public void typeObstacle();
+
+	void empecherPasser();
+
+	void empecherVoir();
+
+	void emplacement();
+
+}
+
+<T> T accept(TreeVisitor visitor) {
+	return null; 
+}
+
+}*/

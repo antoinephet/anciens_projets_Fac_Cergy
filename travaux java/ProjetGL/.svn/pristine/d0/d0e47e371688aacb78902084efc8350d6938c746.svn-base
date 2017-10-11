@@ -1,0 +1,180 @@
+package genie;
+
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+
+import javax.swing.ImageIcon;
+
+
+public class Gardien extends Entite{
+	//private int x ; // protected
+	//private int y ;
+	private String playerImage = "/images/gardien.png";
+	private int velX = 0;
+	private int velY = 0;
+	private int speed = 5;
+	private int choix = (int)(Math.random()*4+1);
+	boolean activeUser = false;
+	
+	
+	
+	public Gardien(int x, int y) {
+		super(x,y);
+	}
+
+
+	
+	public void update(){
+		// vitesse deplacement rectiligne et horizontal de l'ennemi
+		if(!activeUser){
+				
+			
+			if(choix == 1){
+				x+=speed;
+				}else if(choix == 2){
+					x-=speed;
+				}else if(choix == 3){
+					y-=speed;
+				}else if(choix == 4){
+					y+=speed;
+				}
+			
+			if(x > (1082 - 34)){
+				speed = -5;
+			}
+			if(x < (0 + 34)){
+				speed = 5;
+			}
+			if(y > (612)){
+				speed = -5;
+			}
+			if(y < (0 + 34)){
+				speed = 5;
+			}
+			
+			try {
+				Thread.sleep(2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		if(activeUser){
+			
+		
+			x +=velX;
+			y +=velY;
+			
+			// Collision, joueur doit pas sortir du JFrame
+			if(x < 0){
+				
+				x = 0;
+				
+			}
+			
+			if(y < 0){
+				
+				y = 0;
+				}
+			
+			if(x > 1124){
+				
+				x = 1124;
+				
+			}
+			
+			if(y > 720){
+				
+				y = 720;
+				
+			}
+		}
+			
+		
+		
+		
+	}
+		
+	
+	public Rectangle getBounds(){
+		return new Rectangle(x, y, 32, 32);
+	}
+	
+	public void draw(Graphics2D g2d){
+		
+		// dessine le joueur
+		g2d.drawImage(getGardienImage(), x, y, null);
+		//g2d.draw(getBounds());
+	}
+	
+	public Image getGardienImage(){
+		
+		// retourne l'image instancié
+		ImageIcon i = new ImageIcon(getClass().getResource(playerImage));
+		return i.getImage();
+		
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Gardien [x=" + x + ", y=" + y + "]";
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		// attribution des touches du clavier
+		int key = e.getKeyCode();
+		if(key == KeyEvent.VK_RIGHT && activeUser){
+			velX = 5;
+		}
+		else if(key == KeyEvent.VK_LEFT && activeUser){
+			velX = -5;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN && activeUser){
+			velY = 5;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_UP && activeUser){
+			velY = -5;
+			
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_P){
+			
+			activeUser = true;
+			
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_C){
+			
+			activeUser = false;
+			
+		}
+	
+		
+	}
+
+	
+	public void keyReleased(KeyEvent e) {
+		// attribution des touches du clavier
+		int key = e.getKeyCode();
+		if(key == KeyEvent.VK_RIGHT && activeUser){
+			velX = 0;
+		}
+		else if(key == KeyEvent.VK_LEFT && activeUser){
+			velX = 0;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN && activeUser){
+			velY = 0;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_UP && activeUser){
+			velY = 0;
+			
+		}
+		
+	}
+
+	
+}

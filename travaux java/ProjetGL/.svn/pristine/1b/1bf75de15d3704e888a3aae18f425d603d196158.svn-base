@@ -1,0 +1,58 @@
+package genie;
+
+import java.util.Scanner;
+
+public class Testgrille {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("debut du jeu  ");
+	
+		System.out.println("definisez la taille de votre grille : ");
+		//definir les action pour choisir manuellemnt la taille de la grille 
+		Grille gl = new Grille( 8 , 8);
+		
+		gl.afficher();
+		
+		System.out.println("G= gardien \nI= intrus \nE= eau \nM=mur \nA=arbre");
+		//idées : pouvoir placer les elements manuellement 
+		gl.placerIntrus(2, 4, 'I');
+		
+		
+		gl.placerGardien(3, 7, 'G');
+		
+		gl.placerGardien(2, 6, 'G');
+		
+		gl.placerGardien(1, 7, 'G');
+	
+		
+		gl.placerObjet(3, 2, 'E');
+		
+		gl.placerObjet(1, 1, 'M');
+		
+		gl.placerObjet(4, 5, 'A');
+		
+		gl.placerObjet(5, 5, 'E');
+		
+		gl.placerObjet(6, 2, 'M');
+		
+		gl.afficher();
+	
+		gl.deplacerAleatoire();
+		
+		
+		
+		//Scanner sc1 = new Scanner(System.in);
+		//int cmpt = sc1.nextInt() ;
+		
+		
+		
+
+	}
+		
+		
+		
+	
+	}
+
+

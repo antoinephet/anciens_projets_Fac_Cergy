@@ -1,0 +1,40 @@
+package chemin;
+
+
+	
+public abstract class NodeFactory<T> {
+
+	    /**
+	     * Instancie avec un nouveau noeud, avec les valeurs remplies. Les distances
+	     * sont calculées  à l'aide des méthodes abstraites de la classe
+	     *
+	     */
+	    public final Node<T> instanciateNode(final Node<T> parent, final T index, final T goal) {
+	        final double g;
+	        if (parent == null) {
+	            g = computeReel(null, index);
+	        } else {
+	            g = parent.getG() + computeReel(parent.getIndex(), index);
+	        }
+	        final double f = g + computeTheorique(index, goal);
+	        return initNode(parent, index, g, f);
+	    }
+
+	    /**
+	     * Créé un nouveau node avec les paramètres indiqués. 
+	     */
+	    protected Node<T> initNode(final Node<T> parent, final T index, final double g, final double f) {
+	        return new Node<T>(parent, index, g, f);
+	    }
+
+	    
+	    protected abstract double computeReel(T parentIndex, T index);
+
+	    /**
+	     * Renvoit le cout theorique (distance) entre l'index et le goal Une bonne
+	     * fonction theorique doit toujours etre inférieur au reel
+	     *
+	     */
+	    protected abstract double computeTheorique(T index, T goal);
+	}
+

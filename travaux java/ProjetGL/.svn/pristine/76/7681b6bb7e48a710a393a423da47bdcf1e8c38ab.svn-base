@@ -1,0 +1,56 @@
+package genie;
+
+import java.util.Scanner;
+
+public class Testgrille {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Grille gl = new Grille(10 , 10);
+		//gl.afficher();
+		
+System.out.println("G= gardien \nI= intrus \nE= eau \nM=mur \nA=arbre");
+		
+		gl.placerIntrus(2, 4, 'I');
+		
+		gl.placerGardien(3, 7, 'G');
+		gl.placerGardien(2, 6, 'G');
+		gl.placerGardien(1, 7, 'G');
+		
+		gl.placerObjet(3, 2, 'E');
+		gl.placerObjet(1, 1, 'M');
+		gl.placerObjet(4, 5, 'A');
+		gl.placerObjet(5, 5, 'E');
+		gl.placerObjet(6, 2, 'M');
+		
+		gl.afficher();
+		
+		//System.out.print(gl.getCases(3, 7 ));
+		gl.deplacerVersLeHaut();
+		gl.afficher();
+		
+		System.out.println("vers ou voulez vous vous deplacer ?\n 1:vers le haut  \n 2:vers le bas \n 3:vers la droite \n 4:vers la gauche ");
+		Scanner sc1 = new Scanner(System.in);
+		int cmpt = sc1.nextInt() ;
+		
+		switch (cmpt){
+			case 1 : gl.deplacerVersLeHaut(); 
+			break ; 
+			case 2 : gl.deplacerVersLeBas();
+			break ; 
+			case 3 : gl.deplacerDroite();
+			break ; 
+			case 4 : gl.deplacerGauche();
+			break ; 
+		
+			default : System.out.println( " mauvais choix , faites un autre choix");
+			
+		}
+		
+				gl.afficher();
+		
+		
+
+	}
+
+}

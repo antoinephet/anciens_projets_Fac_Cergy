@@ -1,0 +1,268 @@
+
+
+Rapport de projet Génie Logiciel : 
+Les souris
+
+
+Phetramphand Antoine
+Liani Samy
+Université de Cergy Pontoise
+ 
+Table des matières
+I. Introduction	4
+1. Contexte	4
+2. Présentation générale du projet	4
+II. Analyse	5
+1. Contexte	5
+2. Idée générale	5
+3. But du jeu	5
+4. Personnages	5
+5. Gameplay	5
+6. Public visé	6
+7. Programmation	6
+III. Architecture générale	7
+IV. Spécifications	8
+1. Modèle générale des fonctions	8
+2. Description des principales fonctions	8
+V. Description du code source	9
+1. Classe LesSouris	9
+a. Les variables	9
+b. Les ArrayList et les JLabels	10
+c. Le constructeur	11
+d. GenereNourriture()	13
+e. GenereSouris()	14
+f. GenereSouriceau()	15
+g. keyPressed, keyReleased	16
+h. KeyTyped	16
+2. Classe Compteur	18
+3. Classe Jeu	19
+4. Classe Main	21
+VI. Manuel d’utilisation	22
+1. Description des éléments du jeu	22
+2. Exemple d’utilisation	23
+VII. Remarques sur le déroulement du projet	30
+1. Méthode de travail au sein du groupe	30
+2. Difficultés rencontrées	30
+VIII. Conclusion	31
+Glossaire	32
+Bibliographie	33
+Annexe	34
+
+
+ 
+I. Introduction
+1. Contexte
+Dans le cadre de notre formation à l’Université de Cergy Pontoise, les étudiants en Licence informatique deuxième année réalisent des projets personnels afin de valider leur année scolaire. Ce type de réalisation exige donc un certain temps, un investissement personnel et l’usage de toutes les ressources disponibles. Ici,  nous allons réaliser notre projet sous la forme d’un jeu vidéo  programmé en Java appelé « les souris ». Cependant, nous avons choisi un sujet qui est basé sur le système multi-agents que nous devons rapidement résoudre le problème.
+2. Présentation générale du projet
+Ce projet consiste à créer un système multi-agents permettant à l’utilisateur de trouver un moyen d’interagir entre différents agents (ici, ce sont les souris) en fonction de leurs contraintes. L’utilisateur choisit un nombre d’agents ayant chacun des contraintes.
+Au fur et à mesure de l’avancement du projet, nous avons intégré de nouvelles fonctionnalités.
+Voici toutes les fonctionnalités de notre logiciel :
+- Possibilité d’entrer les contraintes aléatoirement ou de saisir manuellement par l’intermédiaire d’une interface graphique.
+- Système de rôles pour les agents pris en compte par  l’algorithme du projet
+- Contrôler et interagir avec les agents.
+ 
+II. Analyse
+1. Contexte
+La souris est l’un des animaux de compagnie les plus appréciés de tous. Cette idée est au centre de nos préoccupations. Afin de divertir le public, nous avons choisi de situer notre jeu sur un aspect « bande dessinée », des souris qui cherchent leur nourriture préférée, le fromage, à travers des murs de brique. 
+ 2. Idée générale
+Le projet « les souris » permet plutôt d’attirer l’attention du public jeune sur les grâce aux interactions sur les souris. Afin de survivre, l’utilisateur va devoir apprendre à bien manipuler manuellement la souris.
+ 3. But du jeu
+En un temps limité, il faut trouver le plus de nourritures possibles représentées par des fromages sous peine de perdre la partie du jeu.
+4. Personnages
+Il existe différents types de souris que vous pouvez contrôler ou interagir avec ces dernières.
+Souris joueur : une souris grise que vous contrôlez principalement
+Souris coopérative : représentée en vert, elles indiquent de nouveaux emplacements sur la nourriture 
+Souris égoïste : représentée en rouge, elles n’indiquent aucun  emplacement sur la nourriture
+Souriceau : créé par le joueur, lorsque ce dernier a atteint un certain de points
+
+5. Gameplay
+Mise à part trouver la nourriture, le joueur a la capacité de sauter par-dessus les obstacles, escalader une échelle, parlez avec des souris qu’il rencontrera. Dès le début du jeu, on commence à jouer avec seulement 30 secondes. A chaque nourriture trouvée, il gagne 10 secondes. 
+Lorsqu’il rencontre une souris coopérative, celle-ci donne de nouveaux emplacements sur la nourriture.
+En revanche, s’il rencontre avec une souris égoïste, cette dernière n’indique rien sur ces emplacements. 
+Si la souris ne réussit pas à temps la nourriture, le jeu est terminé.
+Lorsque le joueur a atteint un certain nombre de points indiqué au score, le joueur verra un souriceau apparaître.
+6. Public visé
+Ce projet cible tous les utilisateurs d'âge confondus. Toute personne ayant un centre d’intérêt (comme les jeux vidéo par exemple) est une cible. Ce projet est créé pour le divertissement.
+7. Programmation
+Le jeu sera programmé en Java sous le logiciel Eclipse.
+
+ 
+III. Architecture générale
+Voici le diagramme de classes UML de notre projet, fait par le logiciel AMCPower.
+ 
+ 
+IV. Spécifications
+1. Modèle générale des fonctions
+-	Présenter au joueur une interface d’entrée dans le jeu.
+-	Expliquer au joueur sa première mission.
+-	Présenter une scène au joueur.
+-	Mettre en évidence des éléments importants de la scène en les surlignant. Le joueur sera donc guidé, mais aura la liberté de se déplacer comme bon lui semble.
+
+2. Description des principales fonctions
+-	Jouabilité simplifiée pour que l’utilisateur puisse utiliser l’application instantanément.
+-	Accomplir sa mission
+ 
+V. Description du code source
+1. Classe LesSouris
+Voici la classe LesSouris qui créé le plateau du jeu et met en place les variables.
+
+a. Les variables
+
+Ci-dessous sont présentées les variables de cette classe.
+
+
+b. Les ArrayList et les JLabels
+
+On définit les ArrayList pour générer les souris et les nourritures et on créé Les JLabels pour les éléments du jeu.
+ 
+
+
+
+c. Le constructeur
+
+Ici, cette partie du code montre la création du JFrame de la classe.
+Ci-dessous, son constructeur et ses méthodes de base.
+
+ 
+d. GenereNourriture()
+
+Cette méthode permet de générer aléatoirement la position des nourritures.
+ 
+
+
+ 
+e. GenereSouris()
+
+Cette méthode permet de générer aléatoirement la position des souris.
+ 
+ 
+f. GenereSouriceau()
+
+Cette méthode permet de générer aléatoirement la position d’un souriceau.
+ 
+ 
+g. keyPressed, keyReleased
+
+Ce sont des méthodes indispensables permettant de détecter où l’utilisateur a saisi au clavier et agir en conséquence.
+
+ 
+h. KeyTyped
+
+Cette méthode permet de détecter où l’utilisateur a saisi au clavier et agir en conséquence.
+
+
+
+ 
+2. Classe Compteur
+C’est la classe qui permet d’activer le compte à rebours du jeu avec une classe interne(Thread).
+ 
+
+ 
+3. Classe Jeu
+C’est la classe qui permet d’afficher le score et créé de l’intelligence artificielle aux souris rouges et verts pour ses déplacements.
+ 
+Ici, cette partie du code montre que les souris bougent aléatoirement à gauche ou à droite.
+ 
+ 
+Lorsque le joueur fait une chute, il descend d’une case du jeu. Sinon, il monte d’une case du jeu lors d’un saut.
+ 
+ 
+4. Classe Main
+Cette classe permet de lancer le jeu.
+ 
+ 
+VI. Manuel d’utilisation
+1. Description des éléments du jeu
+  souris principale : une souris qui pourra être contrôlée par l’utilisateur
+  souriceau : un mini-souris créé lorsque la souris principale aura bien été nourrie
+  souris coopérative : indique des emplacements sur la nourriture
+  souris égoïste : n’indique aucun emplacement sur la nourriture
+  nourriture : permet de nourrir votre souris
+  air :  partie où la souris peut circuler librement
+  une brique : obstacle où la souris ne peut pas la franchir
+  l’échelle : permet de monter ou descendre la souris
+ 
+2. Exemple d’utilisation
+Nous allons ici vous montrer point par point comment ce logiciel fonctionne avec des explications.
+Etape 1 :
+On lance le programme et affiche un message d’introduction.
+ 
+Etape 2 :
+Le jeu affiche ensuite les consignes ou le but du jeu.
+ 
+ 
+Etape 3 :
+Le jeu indique à l’utilisateur les commandes du jeu.
+ 
+ 
+Etape 4 :
+Le jeu nous invite à faire un choix aléatoire ou manuel en appuyant sur « 1 » ou « 2 » pour créer un nombre de souris. Sur cet exemple, on choisit un mode manuel en appuyant sur « 2 » au clavier.
+ 
+Etape 5 :
+Le jeu nous demande cette fois de saisir le nombre exact de souris entre « 1 » et « 4 », puis de valider. 
+ 
+Etape 6 :
+Une fois les données saisies, on lance la partie du jeu. On affiche le plateau du jeu, puis le score et le chronomètre  situés sur la colonne grisée à droite.
+ 
+ 
+Etape 7 :
+Pour interagir avec les souris présentes dans le jeu, il faut les sauter dessus en appuyant sur « z » pour un saut, puis sur « q » ou « d » vous déplacer dans les airs  au clavier, puis affichera un message. Si vous sautez sur une souris verte, d’autres nourritures apparaîtront sur l’écran. 
+ 
+
+En revanche, si vous sautez sur une souris rouge. Le jeu affichera un message et aucune nourriture n’apparaîtra. 
+Etape 8 :
+Si vous avez atteint 2000 points au score, un message s’affichera et créera un souriceau sur l’écran. 
+Etape 9 :
+Si le chronomètre atteint à « 0 », la partie du jeu est terminée.
+ 
+
+ 
+VII. Remarques sur le déroulement du projet
+1. Méthode de travail au sein du groupe
+Après avoir choisi et analysé le sujet, nous avons rédigé le cahier des charges.
+Ensuite, nous nous réunissions pour mettre en commun nos idées, puis nous nous répartissons les tâches pour effectuer chacun une partie du travail.
+Puis, nous nous réunissions afin d’effectuer des tests de notre projet et de corriger les erreurs.
+Nos travaux étaient enregistrés sur nos ordinateurs personnels  pour éviter toute perte de données.
+Etant dans la même section, la communication entre membres du groupe était plutôt aisée.
+Au fur et à mesure de la progression du projet, nous avons rempli sur nos bloc-notes personnels l’avancement du projet pour faciliter la rédaction du rapport.
+
+2. Difficultés rencontrées
+La mise en place de la grille de jeu nous a mis de sérieuses difficultés. En effet, nous avons essayé de créé une grille de la même forme qu’un jeu d’échecs, mais nous avons jugé que au niveau de l’aspect graphique, le plateau de jeu était illisible.
+Quant à la simulation comportementale de souris, au niveau de la réception des informations, nous n’avons pas su comment trouver une solution à ce problème que nous avons décidé de passer à une autre étape du projet.
+L’étape qui nous a mis énormément de temps, c’est la partie où on devait programmer l’intelligence artificielle des souris et les déplacements de la souris ce qui a nécessité plus de recherches.
+ 
+VIII. Conclusion
+Par conséquent, nous avons donc créé notre programme construit avec des fonctionnalités grâce au logiciel Eclipse. Les nouveaux utilisateurs qui testeront notre projet peuvent donc y voir l’utilité de la programmation du système multi-agents et les différentes possibilités qu’offre ce jeu telles que 
+Pour réaliser notre projet, nous nous sommes fixés des objectifs de programmation. Notre produit doit être simple d’utilisation, les résultats du calcul devaient être clairs et compréhensibles, le programme doit utiliser des méthodes d’Eclipse et le code doit être très commenté pour permettre à l’utilisateur de comprendre le code malgré quelques difficultés rencontrées.
+La réalisation de ce projet nous a appris ce qu’est le travail en groupe. Entre autre, nous avons appris à répartir les tâches entre deux personnes, sécuriser les données pour éviter toute perte et mettre en commun le code créé individuellement.
+De plus, au niveau informatique nous avons découvert et maitriser de nouvelles techniques de programmation (multi-agents) et perfectionné notre programmation Java.
+Ceci nous aura été bénéfique pour des projets futurs que ce soit dans les études ou dans la vie professionnelle.
+Si nous devons refaire ce projet, nous déciderons d’optimiser cette fois la simulation des comportements des souris avec plus de fonctionnalités selon nos propres idées.
+ 
+Glossaire
+Gameplay : terme générique qui désigne la facilité de contrôle de jeu, l'originalité des actions à effectuer, la cohérence des menus, la fluidité des mouvements et leur précision.
+Java : langage de programmation informatique orienté objet
+Système multi-agents : un système composé d'un ensemble d'agents, situés dans un certain environnement et interagissant selon certaines relations. Un agent est une entité caractérisée par le fait qu'elle est, au moins partiellement, autonome. Ce peut être un processus, un robot, un être humain, etc.
+UML : (sigle désignant l'Unified Modeling Language ou « langage de modélisation unifié ») est un langage de modélisation graphique à base de pictogrammes
+
+ 
+Bibliographie
+-	http://www.siteduzero.com/ : Site qui nous a permis de résoudre des problèmes liés à la programmation java en général.
+
+ 
+Annexe
+Le sujet du projet « Les souris » :
+Soit une grille de N x N cases sur laquelle évolue des souris. Sur cette grille sont également disposés quelques obstacles (que les souris ne peuvent franchir) et des sources de nourritures. Les souris ont une vision limitée à quelques cases autour d'elles mais ont une excellente mémoire. Elles se rappellent donc de tous les endroits qu'elles ont déjà visités.
+Des sources de nourriture plus ou moins importantes apparaissent aléatoirement et spontanément au cours du temps sur la grille. Chaque source est limitée (pour simplifier, on parlera en nombre d'unités de nourriture). Une souris consomme exactement une unité de nourriture. Une unité de nourriture permet à une souris de survivre pendant t tours de jeu. Au-delà de ce temps, si la souris n'a pas mangée, elle meurt.
+Il est donc indispensable pour la survie d'une souris qu'elle se dirige vers une source de nourriture afin de manger avant l'expiration de son temps.
+Les sources de nourriture n'étant pas inépuisables, il est vital pour les souris d'explorer régulièrement la grille afin de trouver d'autres sources de nourriture, et de veiller au cours de leur exploration d'être toujours à portée d'un point de nourriture connu afin d'y retourner s'il le faut.
+Enfin, les souris croisant une autre souris (sur la même case ou une case voisine) peuvent communiquer. Les souris peuvent communiquer leurs connaissances quant à l'emplacement connu de nourriture.
+A chaque tour de jeu, chaque souris choisira de se déplacer d'une case ou de rester sur place. Suivant la case où elle se trouvera, elle pourra manger ou communiquer. Il est bien évident que plus une source de nourriture sera utilisée par les souris, plus elle s'épuisera vite.
+Chaque souris a un comportement qui lui est propre : 
+Pour la diffusion des informations, on distinguera :
+•	les souris coopératives : qui donnent leurs informations aux souris croisées. On pondérera dans cette catégorie un degré de fiabilité passant de « honnête » (la souris donne toujours les vraies infos) à « menteuse » (la souris donne systématiquement les infos erronées).
+•	les souris égoïstes : qui ne fournissent aucune information ;
+Pour la réception des informations, on distinguera : 
+•	les souris réceptives : qui tiennent compte des informations qu'on leur communique. On pondérera dans cette catégorie un degré de confiance cela va de « naïve » (qui croient toutes les informations reçues) à « fortement sceptiques » (qui croient exactement le contraire de ce qu'on leur dit) ;
+•	les souris nihilistes : qui ne tiennent pas compte des informations reçues ;
+

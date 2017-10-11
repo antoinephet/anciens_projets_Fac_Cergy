@@ -1,0 +1,196 @@
+package test;
+
+
+
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+
+
+
+	public class Jeu extends JPanel implements ActionListener{
+	
+	String game[][] = new String[30][21];
+	private static ArrayList<Mur> murs;
+	private static ArrayList<Eau> eaux;
+	private static ArrayList<Arbre> arbres;
+	
+
+	private Grille g1;
+	
+	Gardien gardien;
+	Intrus intrus;
+	Mur mur;
+	Arbre arbre;
+	Eau eau;
+	FileReader fr;
+	
+	public Jeu(){
+		
+		requestFocus();
+		setFocusable(true);
+		setBackground(Color.WHITE);
+		g1 = new Grille(1122, 714);
+		lancerJeu();
+		
+	}
+	
+	public void lancerJeu(){
+		g1.chargementFichierIhm();
+		
+	}
+	
+	public void paint(Graphics g){
+		
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
+		
+		for(int i=0;i < murs.size();i++){
+			mur = (Mur) murs.get(i);
+			g2d.drawImage(mur.getMur(), mur.getX(), mur.getY(), null);
+			
+		}
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		repaint();
+		
+	}
+	
+	
+
+	public void chargerLevel(){
+		
+		try{
+				
+				fr = new FileReader("Cartes/Carte6.txt");
+				
+			
+			
+			
+			int i = 0;
+			int x=0, y = 0;
+			
+			murs = new ArrayList<Mur>();
+			eaux = new ArrayList<Eau>();
+			arbres = new ArrayList<Arbre>();
+			
+			
+			while((i = fr.read()) != -1){
+				char conv = (char) i; // la valeur en int convertit en char
+				
+				// si la lecture trouve la valeur "0" dans le fichier, alors la valeur change en "M"
+				// et instance la classe Mur
+				if(conv == '0'){
+					game[x][y] = "M";
+					mur = new Mur(x * 34, y * 34);
+					murs.add(mur);
+					
+				}
+				
+				// si la lecture trouve la valeur "1" dans le fichier, alors la valeur change en "A"
+				// et instance la classe Arbre
+				else if(conv == '1'){ // 
+					
+					game[x][y] = "A";
+					arbre = new Arbre(x * 34, y * 34);
+					arbres.add(arbre);
+				}
+				
+				// si la lecture trouve la valeur "2" dans le fichier, alors la valeur change en "E"
+				// et instance la classe Eau
+				else if(conv == '2'){
+					game[x][y] = "E";
+					eau = new Eau(x * 34, y * 34);
+					eaux.add(eau);
+				}
+				
+				// si la lecture trouve la valeur "3" dans le fichier, alors la valeur change en "G"
+				// et instance la classe Gardien
+				else if(conv == '3'){
+					
+					game[x][y] = "G";
+					gardien = new Gardien(x * 34, y * 34);
+					
+				}
+				
+				// si la lecture trouve la valeur "4" dans le fichier, alors la valeur change en "S"
+				// et instance la classe Gardien
+				else if(conv == '4'){
+					game[x][y] = "S";
+					gardien = new Gardien(x * 34, y * 34);
+					
+				}
+				
+				else if(conv == '5'){
+					game[x][y] = "C";
+					gardien = new Gardien(x * 34, y * 34);
+					
+				}
+				
+				// si la lecture trouve la valeur "6" dans le fichier, alors la valeur change en "P"
+				// et instance la classe Gardien
+				else if(conv == '6'){
+					game[x][y] = "P";
+					gardien = new Gardien(x * 34, y * 34);
+					
+				}
+				
+				// si la lecture trouve la valeur "7" dans le fichier, alors la valeur change en "I"
+				// et instance la classe intrus
+				else if(conv == '7'){
+					game[x][y] = "I";
+					intrus = new Intrus(x * 34, y * 34);
+					
+				}
+				// si la lecture trouve la valeur "8" dans le fichier, alors la valeur change en "R"
+				// et instance la classe intrus
+				else if(conv == '8'){
+					game[x][y] = "R";
+					intrus = new Intrus(x * 34, y * 34);
+					
+				}
+				
+				// si la lecture trouve la valeur "9" dans le fichier, alors la valeur change en "D"
+				// et instance la classe intrus
+				else if(conv == '9'){
+					game[x][y] = "D";
+					intrus = new Intrus(x * 34, y * 34);
+					
+				}
+				// si la lecture trouve la valeur " " dans le fichier, alors la valeur change en " " donc pas de valeur
+				
+				else if(conv == ' '){
+					game[x][y] = " ";
+				}
+				else if(conv == '\r' || conv == '\n'){
+					x--;
+				}
+				
+				if(x == 30-1){ // si on atteint le x maximum, on incrémente le y
+					y++;
+					x=0;
+				}
+				else {
+					x++;
+				}
+				
+			}
+			
+		}catch(Exception ex){}
+		repaint();
+	}
+	
+	
+}

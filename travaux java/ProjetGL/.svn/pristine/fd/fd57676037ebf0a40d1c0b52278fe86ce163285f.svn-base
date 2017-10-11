@@ -1,0 +1,84 @@
+package donnees;
+
+import genie.Arbre;
+import genie.Eau;
+import genie.Mur;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import modele.Gardien;
+import modele.Grille;
+import modele.Intrus;
+
+public class EspaceDepot {
+	public static EspaceDepot instance = new EspaceDepot();
+	private ArrayList<Gardien> gardiens = new ArrayList<Gardien>();
+	private ArrayList<Intrus> intrus = new ArrayList<Intrus>();
+	private ArrayList<Mur> murs = new ArrayList<Mur>();
+	private ArrayList<Arbre> arbres = new ArrayList<Arbre>();
+	private ArrayList<Eau> eaux = new ArrayList<Eau>();
+	private Grille grille;
+	
+	public ArrayList<Gardien> getGardiens() {
+		return gardiens;
+	}
+	
+
+	public ArrayList<Intrus> getIntrus() {
+		return intrus;
+	}
+
+	private EspaceDepot() {
+	}
+	
+	public void enregistrerGardien(Gardien g) {
+		gardiens.add(g);
+	}
+	
+	/** Recherche un Gardien sur la Grille à la position x et y 
+	 * @param x la ligne de la grille
+	 * @param y la colonne de la grille
+	 * @return null ou le gardien si il est positionné à l'endroit recherché
+	 */
+	public Gardien rechercherGardien(int x, int y) {
+		for (Iterator<Gardien> it = gardiens.iterator(); it.hasNext();) {
+			Gardien g = it.next();
+			if(g.getX()==x && g.getY()==y){
+				return g ;
+			}
+		}
+		return null;
+	}
+
+		public void enregistrerIntrus(Intrus i) {
+		intrus.add(i);
+		
+	}
+
+
+		public Intrus rechercherIntrus(int x, int y) {
+			for (Iterator<Intrus> it = intrus.iterator(); it.hasNext();) {
+				Intrus g = it.next();
+				if(g.getX()==x && g.getY()==y){
+					return g ;
+				}
+			}
+			return null;
+		}
+	
+	public static EspaceDepot getInstance() {
+		return instance;
+	}
+
+	public void enregisterGrille(Grille grille) {
+		this.grille = grille;
+	}
+
+	public Grille getGrille() {
+		return grille ;
+	}
+	
+
+
+}

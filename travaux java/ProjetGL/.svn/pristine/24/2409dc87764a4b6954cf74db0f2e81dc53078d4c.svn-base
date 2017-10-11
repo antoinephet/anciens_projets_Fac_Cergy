@@ -1,0 +1,13 @@
+package visiteurs;
+
+import donnees.EspaceDepot;
+import modele.Gardien;
+import modele.Grille;
+import modele.Intrus;
+
+public interface Visiteur {
+	void visite(Grille g);
+	void visite(Gardien g);
+	void visite(Intrus i);
+	EspaceDepot eDepot = EspaceDepot.getInstance();
+}

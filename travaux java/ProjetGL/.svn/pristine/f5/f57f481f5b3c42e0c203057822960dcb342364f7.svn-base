@@ -1,0 +1,82 @@
+package visiteurs;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.apache.log4j.Logger;
+
+import log.LoggerUtility;
+import modele.Console;
+import modele.Gardien;
+import modele.Grille;
+import modele.Intrus;
+
+public class VisiteurPlacerAleatoirement implements Visiteur {
+	private static Logger logger = LoggerUtility.getLogger(VisiteurPlacerAleatoirement.class);
+
+	@Override
+	public void visite(Grille g) {
+	}
+
+	/* (non-Javadoc)
+	 * @see visiteurs.Visiteur#visite(modele.Gardien)
+	 */
+	@Override
+	public void visite(Gardien g) {
+		positionnerGardien(g);
+
+	}
+	
+	/**
+	 * @param g
+	 */
+	public void positionnerGardien(Gardien g) {
+		int nbLignes = eDepot.getGrille().getNbLigne();
+		int nbColonnes = eDepot.getGrille().getNbColonne();
+		g.setX(nombreAleatoire(0, nbLignes));
+		g.setY(nombreAleatoire(0, nbColonnes));
+	}
+	
+	public void positionnerIntrus(Intrus g) {
+		int nbLignes = eDepot.getGrille().getNbLigne();
+		int nbColonnes = eDepot.getGrille().getNbColonne();
+		g.setX(nombreAleatoire(0, nbLignes));
+		g.setY(nombreAleatoire(0, nbColonnes));
+	}
+	
+	public void positionnerTousLesGardiens() {
+		ArrayList<Gardien> gardiens = eDepot.getGardiens();
+		for (Iterator<Gardien> it = gardiens.iterator(); it.hasNext();) {
+			Gardien g = it.next();
+			positionnerGardien(g);
+			logger.info("Gardien positionnÈ ‡ ( "+g.getX()+" ; "+g.getY()+" )"); 
+		}
+	}
+	
+	public void positionnerTousLesIntrus() {
+		ArrayList<Intrus> intrus = eDepot.getIntrus();
+		for (Iterator<Intrus> it = intrus.iterator(); it.hasNext();) {
+			Intrus i = it.next();
+			positionnerIntrus(i);
+			logger.info("Intrus positionnÈ ‡ ( "+i.getX()+" ; "+i.getY()+" )"); 
+		}
+	}
+	
+	/*
+	 * g√©n√®re un nombre al√©atoire entre deux valeurs
+	 * 
+	 * @param min ma valeur minimale.
+	 * @param max ma valeur maximale.
+	 * @return nombre nombre al√©atoire compris entre min et max 
+	 */
+	public int nombreAleatoire(int min, int max) {
+		return (int) ((Math.random() * (max + 1 - min)) + min);
+	}
+
+	@Override
+	public void visite(Intrus i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,9 @@
+package genie;
+
+public class JeuGardienParc {
+
+	public JeuGardienParc() {
+
+	}
+
+}

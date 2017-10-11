@@ -1,0 +1,37 @@
+\relax 
+\catcode`:\active
+\catcode`;\active
+\catcode`!\active
+\catcode`?\active
+\select@language{french}
+\@writefile{toc}{\select@language{french}}
+\@writefile{lof}{\select@language{french}}
+\@writefile{lot}{\select@language{french}}
+\newlabel{sec:remerciements}{{}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.1}Introduction}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.1.1}introduction g\IeC {\'e}n\IeC {\'e}rale}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.1.2}Pr\IeC {\'e}sentation du projet }{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.2}Fonctionalit\IeC {\'e}s du jeu}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.2.1}But du jeu}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.3}Fonctionnement}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.3.1}Organisation}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.3.2}R\IeC {\'e}alisation}{5}}
+\newlabel{sec:impl}{{0.3.2}{5}}
+\@writefile{toc}{\contentsline {paragraph}{}{5}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces R\IeC {\'e}partition des t\IeC {\^a}ches}}{6}}
+\newlabel{tab:document}{{1}{6}}
+\@writefile{toc}{\contentsline {paragraph}{}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.4}Manuel d'utilisation}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.4.1}Mode Console}{8}}
+\@writefile{toc}{\contentsline {paragraph}{}{8}}
+\newlabel{}{{0.4.1}{8}}
+\newlabel{}{{0.4.1}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.4.2}Mode graphique(IHM)}{9}}
+\@writefile{toc}{\contentsline {paragraph}{}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.5}Difficult\IeC {\'e}s rencontr\IeC {\'e}es}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.6}R\IeC {\'e}sultats}{12}}
+\@writefile{toc}{\contentsline {paragraph}{}{12}}
+\@writefile{toc}{\contentsline {paragraph}{}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.7}Conclusion}{12}}
+\@writefile{toc}{\contentsline {paragraph}{}{12}}
+\@writefile{toc}{\contentsline {paragraph}{}{12}}

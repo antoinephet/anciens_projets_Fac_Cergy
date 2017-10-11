@@ -1,0 +1,12 @@
+00000ff00000
+01111d311110
+01   d   110
+014badab  10
+f  addda   f
+fddddgdddddf
+f  bdddb2  f
+01 aadaa2 10
+01 22d222 10
+01 7 d  8 10
+01111d e1110
+00000ff00000

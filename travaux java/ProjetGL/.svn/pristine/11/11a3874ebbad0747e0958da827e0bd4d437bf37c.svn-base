@@ -1,0 +1,41 @@
+package test;
+
+
+
+public class TestConsole {
+
+
+	public static void main(String[] args) {
+		
+		System.out.println("****************Début de jeu****************");
+		System.out.println("****************Gardien de parc****************");
+		System.out.println("");
+		
+		Grille g = new Grille(0,0);
+		
+		g.affichage();
+		
+		System.out.println("\n\n");
+		System.out.println("Affichage...");
+		System.out.println("\n\n");
+		System.out.println("Les gardiens sont représentés par G,S,C and P");
+		System.out.println("Et les Intrus sont représentés par I,R,E represent Intruders");
+		System.out.println("\n\n");
+		
+		g.affichage();
+		
+		System.out.println("\n\n");
+		System.out.println("Test des mouvements manuels des gardiens et des intrus...");
+		System.out.println("\n\n");
+		
+		g.deplacementManuel();
+		
+		
+		System.out.println("\n\n");
+		System.out.println("Test des mouvements aléatoire des gardiens et des intrus...");
+		System.out.println("\n\n");
+		
+		g.deplacerAleatoire();
+	}
+
+}

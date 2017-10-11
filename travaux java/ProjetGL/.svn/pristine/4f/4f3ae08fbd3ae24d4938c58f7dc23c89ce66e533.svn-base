@@ -1,0 +1,13 @@
+package modele;
+
+public class Case {
+	private int positionX;
+	private int positionY;
+	
+	
+	public Case(int positionX, int positionY) {
+		this.positionX = positionX;
+		this.positionY = positionY;
+		
+	}
+}

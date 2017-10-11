@@ -1,0 +1,22 @@
+\section{Specification}
+\label{sec:specification}
+
+
+Documents a remmettre;
+\begin{itemize}
+\item Code source avec tous les dossiers nécessaire
+\item Cahier des charges
+\item Rapport
+\end{itemize}
+
+Environement de travail
+
+\begin{itemize}
+\item Système d’exploitation :Windows 7
+\item Environnement de développement : JRE
+\item Compilateur JAVA : Eclipse
+\item Latex
+\item Dia
+\item Winedt
+\item USVN
+\end{itemize}

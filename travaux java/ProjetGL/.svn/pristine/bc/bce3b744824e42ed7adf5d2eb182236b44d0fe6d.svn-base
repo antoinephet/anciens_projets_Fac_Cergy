@@ -1,0 +1,43 @@
+package genie;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class Ihm extends JFrame{
+	
+	private Container cont;
+	
+	public Ihm(){
+		
+		
+		// affiche les messages
+	    JOptionPane.showMessageDialog(null,"Bienvenue dans le parc!!");
+	    JOptionPane.showMessageDialog(null,"But du jeu :\n\nLes Gardiens doivent chasser les intrus du parc");
+	    JOptionPane.showMessageDialog(null,"Bonne partie!!");
+	    
+		initLayout();
+		cont.setBackground(Color.WHITE);
+		
+	}
+
+	private void initLayout() {
+		
+		setTitle("Le jeu");
+		setSize(614, 636);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(true);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		
+		// mise en place du conteneur principal
+	    
+	    cont = getContentPane();
+	    cont.setLayout(null);
+		
+	    
+		
+	}
+}

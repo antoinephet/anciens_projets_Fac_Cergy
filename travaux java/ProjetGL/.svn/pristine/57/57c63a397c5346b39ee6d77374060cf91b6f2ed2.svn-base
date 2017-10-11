@@ -1,0 +1,26 @@
+\section{Fonctionalités}
+
+\input{realisation.tex} 
+ l'application du jeu video réaliser nous à permit  de réaliser les fonctionnalités suivantes : 
+ \subsection{1ere Etape}
+\textbf{présentation}
+\paragraph{•}
+ Présenter au joueur une interface d’entrée dans le jeu : cette interface expliquera à l’utilisateur la tâche qu’il devra accomplir,
+\textbf{mise en évidence}
+\paragraph{•}
+ Mettre en évidence des éléments importants de la scène en les surlignant : on met en valeur, en premier plan, les gardiens et les intrus afin de savoir pour l'utilisateur qui on peut contrôler et qui sont les cibles à éliminer ; puis en second plan les obstacles du jeu(eau, arbre, mur…), afin de permettre au joueur de prendre en compte ces éléments et leurs fonctions,
+\textbf{simplification}
+\paragraph{•}
+Offrir une simplicité d'utilisation : le jeu devra être facile à utiliser et à manipuler, c'est-à-dire moins de touches du clavier à utiliser, suivi des touches de la souris.
+
+\textbf{rapidité}
+\paragraph{•}
+- Offrir une rapidité de mise en œuvre : le jeu doit permettre à des joueurs de mesurer leurs réflexes mentaux afin qu’il puisse prendre des décisions (ex : trouver un chemin le plus court possible pour arriver jusqu'à l'intrus) le plus rapidement possible lors de la partie du jeu
+
+\textbf{temps d'exécution}
+\paragraph{•}
+Assurer des temps d'exécution faibles : lors du lancement du logiciel, les temps de chargement des programmes doivent être rapides.
+
+\textbf{temps d'iteraction}
+\paragraph{•}
+Assurer des temps d'interactions joueur / machine faibles : durant l’exécution du logiciel, l’utilisateur ne doit sentir aucune latence, que ce soit avec le clavier ou la souris. Les déplacements du joueur doivent être fluides. 

@@ -1,0 +1,46 @@
+
+\section{Objectif}
+\label{sec:Objectif}
+
+\paragraph{} Nous avons présenté l'objectif du projet dans la section \ref{sec:introduction}. Dans cette section, nous présentons la spécification de notre logiciel réalisé. Ceci correspond principalement au cahier des charges.
+
+\subsection{Description brève du logiciel}
+\label{sec:spec1}
+\paragraph{}L’objectif du projet consiste à développer un jeu ou une application basé sur un système de type «multi-agents réactifs» mettant en place comme éléments : un gardien, des intrus et des éléments du décor ou de l’interface graphique (eau, arbre, mur…).
+
+\subsection{Le but du jeu}
+\label{sec:spec2}
+\paragraph{}Cela consiste à l’utilisateur à prendre en main un gardien qui a pour but d’attraper les intrus présents dans un environnement donné (ici un parc). L’idée est divertir l’utilisateur afin qu’il soit immergé dans le cadre du divertissement.
+
+\subsection{Liste des fonctionnalités}
+\label{sec:spec3}
+\paragraph{}Cette application permettra de réaliser les fonctionnalités suivantes
+\paragraph{Présenter au joueur une interface d’entrée dans le jeu}: cette interface expliquera à l’utilisateur la tâche qu’il devra accomplir.
+\paragraph{- Mettre en évidence des éléments importants de la scène en les surlignant}l’utilisateur sera donc guidé implicitement.
+\paragraph{- Offrir une simplicité d'utilisation }: le jeu devra être facile à utiliser et à manipuler.
+\paragraph{- Offrir une rapidité de mise en œuvre}: le jeu doit permettre à des joueurs de mesurer leurs réflexes mentaux afin qu’il puisse prendre des décisions le plus rapidement possible lors de la partie du jeu.
+\paragraph{- Assurer des temps d'exécution faibles }: lors du lancement du logiciel, les temps de chargement des programmes doivent être rapides.
+\paragraph{- Assurer des temps d'interactions joueur / machine faibles }: durant l’exécution du logiciel, l’utilisateur ne doit sentir aucune latence, que ce soit avec le clavier ou la souris. Les déplacements du joueur doivent être fluides.
+
+\subsection{Contraintes}
+\label{sec:spec4}
+\paragraph{}- Problème de repérage des intrus par le gardien lié a son champ de vision limité.\\
+- Détermination de la position des intrus\\
+- Présence de multiple intrus dans l'espace.\\
+- Déplacements et simulation des intrus.\\
+
+\newpage 
+
+\section{Livraisons attendues}
+\label{sec:Livraisons}
+\paragraphe{}À la fin de notre projet, nous pensons rendre les documents suivants :
+\begin{itemize}
+  \item des programmes en langage java comportant une interface graphique  
+  \item l’exécutable jar des programmes
+  \item manuel d'utilisation  du logiciel
+  \item un rapport
+  \item un cahier des charges final
+	\item un planning (en cours)
+  \item javadoc
+\end{itemize}
+

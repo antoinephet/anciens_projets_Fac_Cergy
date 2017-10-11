@@ -1,0 +1,6 @@
+package gui;
+
+public class Tile {
+
+		public static final int SIZE = 32;
+}

@@ -1,0 +1,9 @@
+package genie;
+
+public interface Action {
+	public void deplacer(); 
+	public void reperer() ;
+	public void capture() ; 
+	public void eliminer(); 
+	
+}

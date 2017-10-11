@@ -1,0 +1,54 @@
+package genie;
+
+public class Eau {
+	/**
+	 * @return the surface
+	 */
+	public float getSurface() {
+		return surface;
+	}
+
+	/**
+	 * @param surface the surface to set
+	 */
+	public void setSurface(float surface) {
+		this.surface = surface;
+	}
+
+	/**
+	 * @return the profondeur
+	 */
+	public float getProfondeur() {
+		return profondeur;
+	}
+
+	/**
+	 * @param profondeur the profondeur to set
+	 */
+	public void setProfondeur(float profondeur) {
+		this.profondeur = profondeur;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Eau1 [surface=" + surface + ", profondeur=" + profondeur
+				+ ", getSurface()=" + getSurface() + ", getProfondeur()="
+				+ getProfondeur() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
+	private float surface;
+	private float profondeur;
+	
+	public  Eau(float surface , float profondeur) {
+	super();
+	this.surface = surface;
+	this.profondeur = profondeur;
+}
+
+
+}

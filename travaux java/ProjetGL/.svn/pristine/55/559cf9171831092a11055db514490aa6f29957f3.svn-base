@@ -1,0 +1,24 @@
+\section{Introduction}
+\label{sec:introduction}
+
+%Il n'y a pas d'espace au début du paragraphe.
+\noindent Ceci est une démonstration d'un document rédigé en utilisant LaTex.
+
+\paragraph{Fonctionnalités} Fonctionnalités du programme :
+\begin{itemize}
+\item Présenter au joueur une interface d’entrée dans le jeu
+\item Mettre en évidence des éléments importants de la scène en les surlignant
+\item Offrir une simplicité d'utilisation
+\item Offrir une rapidité de mise en oeuvre
+\item Assurer des temps d'exécution faibles
+\item Assurer des temps d'interactions joueur / machine faibles
+\end{itemize}
+
+Dans \cite{data}, blablalba
+
+\paragraph{} Outils de développement :
+\begin{enumerate}
+\item Java
+\item Eclipse
+\item Latex
+\end{enumerate}

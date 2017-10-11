@@ -1,0 +1,22 @@
+\chapiter{Introduction
+
+
+\section{introduction générale}
+\paragraphe{}L’intelligence artificielle est de plus en plus utilisée dans le monde d’aujourd’hui. Le
+multi-agents réactifs est une méthode de programmation pour créer des intelligences artificielles.
+Dans le cadre de notre formation à l’Université de Cergy Pontoise, les étudiants en Licence
+informatique deuxième année réalisent des projets personnels afin de valider leur année scolaire. Ce
+type de réalisation exige donc un certain temps, un investissement personnel et l’usage de toutes les
+ressources disponibles. Ici, nous allons réaliser notre projet sous la forme d’un jeu vidéo appelé « le
+gardien de parc».
+
+\section{Présentation du projet }
+
+\paragraphe{}Afin d’appliquer les méthodologies et les notions enseignées au cours de  l'année, nous devons réaliser un projet consistant à consevoir un jeu de type multi-agents.Celui-ci consiste à initialiser une grille, soit de manière aléatoire suivant certains paramètres données par l'utilisateur,  soit de manière manuelle par l'utilisateur.Dans ce grille nous devrons pouvoir placer des personnages(gardiens et intrus) aisin que des decors sui representerons des obstacles(arbre, mur et eau) pour empecher les deplacements de certains personnages.Par la suite nous avaons la responsabilité de simuler les actions des gardiens et des intrus sur une même grille pour que le gardien puisse attrapper et chasser les intrus présentent sur son champs de vision.Cependant le gardien doit tenir compte des obstacles et les éviter lors de sa quete.
+
+\vspace{10mm}
+\paragraphe{}Au cours du jeu l'utlisateur doit pouvoir soit controle manuellement les actions(déplacement etc) du gardien , soit de manière aléatoire en laissant le gardien faire  ces actions aléatoirement.
+
+
+
+

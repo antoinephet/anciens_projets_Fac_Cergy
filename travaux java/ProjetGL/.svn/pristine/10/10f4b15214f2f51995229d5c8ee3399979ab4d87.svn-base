@@ -1,0 +1,5 @@
+\section{Introduction}
+\paragraph{}
+Afin d’appliquer les méthodologies et les notions enseignées jusqu'en
+Maîtrise Informatique à l’Université Cergy Pontoise nous devons réaliser un travail d'etude.Celui-ci nous permet à nous, étudiants, de nous initier à la recherche, d’appliquer les connaissances acquises durant notre scolarité et de favoriser le travail en groupe encadré par de futurs enseignants.
+Le projet que nous devrons réaliser est le gardien d'un parc. d'Initialiser une grille, soit de manière aléatoire suivant certains paramètres données par l'utilisateur (densités des obstacles, nombre d'intrus, etc.) ; soit de manière manuelle par l'utilisateur. Exécuter pas à pas les actions du gardien.avec des intrus qui bougent, ou pas. avec un utlisateur qui mène un jeu Simuler les actions de G gardiens et I intrus sur une même grille. 

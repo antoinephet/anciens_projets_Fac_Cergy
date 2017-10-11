@@ -1,0 +1,47 @@
+
+%D�finir le format du document: papier, taille de police, type de document, etc.
+\documentclass[a4paper, 11pt]{article}
+
+%%%%%%%%% Packages externes utilis�s %%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\usepackage{geometry}
+ \geometry{
+ [a4paper,
+ total={210mm,297mm},
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm]
+ }
+
+%%%%%%%%% Le corps du document entre begin et end %%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%Page de garde
+\input{titre.tex}
+
+%G�n�ration automatique de la table des mati�res, de la liste des figures et de la liste des tableaux
+\tableofcontents
+\listoffigures
+\listoftables
+
+\input{introduction.tex}\newpage
+\input{presentation.tex}\newpage
+\input{objectif.tex}\newpage
+\input{livraison.tex}\newpage
+\input{conception.tex}
+\input{manuel.tex}
+
+%R�f�rences bibliographiques du document
+\bibliographystyle{plain}
+\bibliography{bibliographies}
+\nocite{*}
+
+\end{document}

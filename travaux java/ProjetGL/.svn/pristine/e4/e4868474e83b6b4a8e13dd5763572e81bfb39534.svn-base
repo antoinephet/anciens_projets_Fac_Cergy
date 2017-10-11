@@ -1,0 +1,26 @@
+%%%%%%%%%%%%%%% Page de garde %%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}{
+    \begin{center}
+        \vspace* {30mm}
+        {\Large \textbf {Université de Cergy-Pontoise}} \\
+        \vspace* {15mm}
+        {\Large \textbf {RAPPORT}} \\
+        \vspace* {15mm}
+        pour le projet Génie Logiciel \\
+        \textbf {Licence d'Informatique 2ème année} \\
+        \vspace* {15mm}
+
+	sur le sujet \\
+        \vspace* {15mm}
+	{\Huge \textsf{GARDIEN DE PARC}} \\
+        \vspace* {10mm}
+ 	rédigé par \\
+        \vspace* {10mm}
+        {\Large \textbf { Makoura Karabouali Antoine Phetramphamd 				Ramatoulaye Tangara }} \\
+        \vspace* {10mm}
+        \date \\ Mai 2014
+        \vspace* {10mm}
+	\end{center}
+}
+\end{titlepage}

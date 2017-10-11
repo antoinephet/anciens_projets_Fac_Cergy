@@ -1,0 +1,63 @@
+package persistence;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class StudentPersist {
+	private String id;
+	private String firstname;
+	private String lastname;
+	private int age;
+	private List<ChoicePersist> choices = new ArrayList<ChoicePersist>();
+
+	public StudentPersist() {
+	}
+
+	public StudentPersist(String firstname, String lastname, int age) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.age = age;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public List<ChoicePersist> getChoices() {
+		return choices;
+	}
+
+	public void setChoices(List<ChoicePersist> choices) {
+		this.choices = choices;
+	}
+	
+	
+}

@@ -1,0 +1,31 @@
+\documentclass[a4paper, 11pt]{report}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\begin{document}
+\begin{wrapfigure}
+\vspace{8cm}
+\begin{center}
+\includegraphics[height=200, width=300]{images/gardien.png}
+\end{center}
+\end{wrapfigure}
+
+\input{titre.tex}
+\input{article.tex}
+\setcounter{tocdepth}{3}
+%\pagenumbering{roman}
+\tableofcontents
+\newpage{}
+\input{introduction.tex}\newpage{}
+\input{implementation.tex}\newpage{}
+\input{developpement.tex}\newpage{}
+\input{difficultes.tex}\newpage{}
+\input{conclusion.tex}
+
+
+\end{document}

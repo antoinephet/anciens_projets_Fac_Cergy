@@ -1,0 +1,122 @@
+package visiteurs;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.apache.log4j.Logger;
+
+import log.LoggerUtility;
+import modele.Arbre;
+import modele.Case;
+import modele.Eau;
+import modele.Gardien;
+import modele.Grille;
+import modele.Intrus;
+import modele.Mur;
+import modele.Obstacle;
+
+public class VisiteurPlacerAleatoirement implements Visiteur {
+	private static Logger logger = LoggerUtility.getLogger(VisiteurPlacerAleatoirement.class);
+
+	@Override
+	public void visite(Grille g) {
+	}
+
+	/* (non-Javadoc)
+	 * @see visiteurs.Visiteur#visite(modele.Gardien)
+	 */
+	@Override
+	public void visite(Gardien g) {
+		positionnerGardien(g);
+
+	}
+	
+	/**
+	 * @param g
+	 */
+	public void positionnerGardien(Gardien g) {
+		int nbLignes = eDepot.getGrille().getNbLigne();
+		int nbColonnes = eDepot.getGrille().getNbColonne();
+		g.setX(nombreAleatoire(0, nbLignes-1));
+		g.setY(nombreAleatoire(0, nbColonnes-1));
+	}
+	public void positionnerTousLesGardiens() {
+		ArrayList<Gardien> gardiens = eDepot.getGardiens();
+		for (Iterator<Gardien> it = gardiens.iterator(); it.hasNext();) {
+			Gardien g = it.next();
+			positionnerGardien(g);
+			logger.info("Gardien positionn� � ( "+g.getX()+" ; "+g.getY()+" )"); 
+		}
+	}
+	
+	public void positionnerIntrus(Intrus g) {
+		int nbLignes = eDepot.getGrille().getNbLigne();
+		int nbColonnes = eDepot.getGrille().getNbColonne();
+		g.setX(nombreAleatoire(0, nbLignes-1));
+		g.setY(nombreAleatoire(0, nbColonnes-1));
+	}
+	
+	
+	public void positionnerTousLesIntrus() {
+		ArrayList<Intrus> intrus = eDepot.getIntrus();
+		for (Iterator<Intrus> it = intrus.iterator(); it.hasNext();) {
+			Intrus i = it.next();
+			positionnerIntrus(i);
+			logger.info("Intrus est positionne à ( "+i.getX()+" ; "+i.getY()+" )"); 
+		}
+	}
+	public void positionnerObstacle(Obstacle obstacle) {
+		int nbLignes = eDepot.getGrille().getNbLigne();
+		int nbColonnes = eDepot.getGrille().getNbColonne();
+		obstacle.setX(nombreAleatoire(0, nbLignes-1));
+		obstacle.setY(nombreAleatoire(0, nbColonnes-1));
+		Case uneCase = eDepot.rechercherCase(obstacle.getX(), obstacle.getY());
+		logger.info("l'Obstacle est  positionne à ( "+obstacle.getX()+" ; "+obstacle.getY()+" ) = "+eDepot.rechercherCase(obstacle.getX(), obstacle.getY())); 
+		if(obstacle instanceof Arbre) {
+			uneCase.setTraversabiliteObstacle(true);
+			uneCase.setVisibiliteObstacle(false);
+		}
+		else if(obstacle instanceof Mur) {
+			uneCase.setTraversabiliteObstacle(false);
+			uneCase.setVisibiliteObstacle(false);
+		}
+		else  {
+			uneCase.setTraversabiliteObstacle(false);
+			uneCase.setVisibiliteObstacle(true);
+		}
+	}
+	
+	
+	public void positionnerTousLesObstacles() {
+		ArrayList<Obstacle> Obstacle = eDepot.getObstacles();
+		for (Iterator<Obstacle> it = Obstacle.iterator(); it.hasNext();) {
+			Obstacle i = it.next();
+			positionnerObstacle(i);
+			logger.info("Obstacle positionn� � ( "+i.getX()+" ; "+i.getY()+" )"); 
+		}
+	}
+	
+	/*
+	 * génère un nombre aléatoire entre deux valeurs
+	 * 
+	 * @param min ma valeur minimale.
+	 * @param max ma valeur maximale.
+	 * @return nombre nombre aléatoire compris entre min et max 
+	 */
+	public int nombreAleatoire(int min, int max) {
+		return (int) ((Math.random() * (max + 1 - min)) + min);
+	}
+
+	@Override
+	public void visite(Intrus i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visite(Obstacle obstacle) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

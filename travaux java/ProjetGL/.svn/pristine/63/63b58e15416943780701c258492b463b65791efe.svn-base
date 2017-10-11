@@ -1,0 +1,57 @@
+\usepackage{graphicx}
+\section{Introduction}
+
+
+\subsection{introduction générale}
+\vspace{10mm}
+\paragraphe{}L’intelligence artificielle est de plus en plus utilisée dans le monde d’aujourd’hui. Le
+multi-agents réactifs est une méthode de programmation pour créer des intelligences artificielles.
+Dans le cadre de notre formation à l’Université de Cergy Pontoise, les étudiants en Licence
+informatique deuxième année réalisent des projets personnels afin de valider leur année scolaire. Ce
+type de réalisation exige donc un certain temps, un investissement personnel et l’usage de toutes les
+ressources disponibles. Ici, nous allons réalisé notre projet sous la forme d’un jeu vidéo appelé « le
+gardien de parc».
+\vspace{10mm}
+
+\subsection{Présentation du projet }
+
+\paragraphe{}Afin d’appliquer les méthodologies et les notions enseignées au cours de l'année, nous devons réaliser un projet consistant à concevoir un jeu de type multi-agents. Celui-ci consiste à initialiser une grille, soit de manière aléatoire suivant certains paramètres données par l'utilisateur,  soit de manière manuelle par l'utilisateur. Dans cette grille, nous devrons pouvoir placer des personnages(gardiens et intrus) ainsi que des décors sui representerons des obstacles(arbre, mur et eau) pour empêcher les déplacements de certains personnages. Par la suite, nous avons la responsabilité de simuler les actions des gardiens et des intrus sur une même grille pour que le gardien puisse attraper et chasser les intrus présentant sur son champ de vision. Cependant, le gardien doit tenir compte des obstacles et les éviter lors de sa quête.
+
+\vspace{10mm}
+\paragraphe{}Au cours du jeu, l'utlisateur doit pouvoir soit contrôler manuellement les actions(déplacement etc) du gardien, soit de manière aléatoire en laissant le gardien faire  ces actions aléatoirement.
+
+\section{Fonctionalités du jeu}
+
+ \paragraphe{}L'application du jeu video réalisée nous a permis de réaliser les fonctionnalités suivantes : 
+ 
+\begin{itemize} 
+ \item{}Présenter au joueur une interface d’entrée dans le jeu : 
+ \paragraphe{}cette interface expliquera à l’utilisateur la tâche qu’il devra accomplir,
+ 
+ \vspace{10mm}
+\item{}Mettre en évidence des éléments importants de la scène en les surlignant : 
+\paragraphe{}on met en valeur, en premier plan, les gardiens et les intrus afin de savoir pour l'utilisateur qui on peut contrôler et qui sont les cibles à éliminer; puis en second plan les obstacles du jeu(eau, arbre, mur…), afin de permettre au joueur de prendre en compte ces éléments et leurs fonctions,
+
+\vspace{10mm}\item{}Offrir une simplicité d'utilisation : 
+\paragraphe{}le jeu devra être facile à utiliser et à manipuler, c'est-à-dire moins de touches du clavier à utiliser, suivi des touches de la souris.
+
+\vspace{10mm}
+\item{}Offrir une rapidité de mise en œuvre : 
+\paragraphe{}le jeu doit permettre à des joueurs de mesurer leurs réflexes mentaux afin qu’il puisse prendre des décisions (ex : trouver un chemin le plus court possible pour arriver jusqu'à l'intrus) le plus rapidement possible lors de la partie du jeu
+
+\vspace{10mm}
+\item{}Assurer des temps d'exécution faibles : 
+\paragraphe{}lors du lancement du logiciel, les temps de chargement des programmes doivent être rapides.
+
+\vspace{10mm}
+\item{}Assurer des temps d'interactions joueur / machine faibles : 
+\paragraphe{}durant l’exécution du logiciel, l’utilisateur ne doit sentir aucune latence, que ce soit avec le clavier ou la souris. Les déplacements du joueur doivent être fluides. 
+
+\vspace{10mm}
+\end{itemize}
+\subsection{But du jeu} 
+\paragraphe{}Le jeu consiste à chasser des personnages de type intrus par des personnages de type gardien dans un parc composé par des obstacles
+qui rend difficile les déplacements.
+
+
+

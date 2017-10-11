@@ -1,0 +1,8 @@
+\section{Difficultés rencontrées}
+
+\paragraphe{}La réalisation de ce projet n'était pas chose facile, il nous a demandé beaucoup de réflexion, de temps, de recherches, de motivation, ainsi que d'organisation et de discipline. La difficulté majeure que nous avons rencontrés est la mise en place du mode IHM, c'est à dire de pouvoir simuler les déplacements des personnages et de leurs actions.
+\vspace{1cm}
+
+\paragraphe{}Le repérage et la capture des intrus par les gardiens ont été aussi un souci majeur du fait qu'il fallait définir le champ de vision du gardien à partir duquel on  calcule le chemin le plus rapide ( grâce à ASTAR) pour permettre le capturage de l'intrus par le gardien le plus proche.
+\vspace{1cm}
+\paragraphe{}Pour finir la mise en commun des différentes versions, cela a posé à des petits problèmes. à cause de cela notre projet présente 2 versions du mode console car nous avons pas eu suffissament de temps pour raccorder les 2. Donc nous pensons que la gestion du temps a été un problème non négligeable dans notre groupe.

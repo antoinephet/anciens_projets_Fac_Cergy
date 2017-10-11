@@ -1,0 +1,10 @@
+package genie;
+
+public interface Obstacle {
+
+	void dempecherPasser();
+
+	void empecherVoir();
+
+	void emplacement();
+}

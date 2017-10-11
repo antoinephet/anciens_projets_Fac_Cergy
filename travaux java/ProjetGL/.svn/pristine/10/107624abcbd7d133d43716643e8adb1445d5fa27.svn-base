@@ -1,0 +1,57 @@
+
+\section{fonctionnement}
+
+\subsection{Organisation}
+\paragarphe{}Notre équipe est composée de trois membres à la charge du projet : Karabouali Makoura
+, Phetramphand Antoine et Tangara Ramatoulaye.
+Pour mieux appréhender le projet, nous avons entamer des recherches et approfondir les non acquis
+et mettre le problème en oeuvre techniquement en utilisant le processus «modèle en cascade»
+\vspace{10mm}
+\paragarphe{}Chaque semaine, nous nous sommes réunit pour réfléchir à l'avancement de nos différents travaux et voir les solutions possibles en cas d'erreur.Et  pour mieux travailler en parallèle , nous avons utilisés les messages électroniques afin de s'informer sur l'avancemeent de nos travaux respectifs pour permettre de mieux fixer la prochaine mise en commun.
+
+\vspace{10mm}
+\paragarphe{}Tout d'abord, nous avons commencer par le développement du mode console puis du mode graphique car celui-ci utilise une partie du code du mode console.
+Pour chaque avancement nous avons établis des tests afin d'etre certain du bon fonctionnement avant de passer à autre chose.
+ 
+\vspace{10mm}
+
+
+\subsection{Réalisation}
+\label{sec:impl}
+\paragraph{} Pour pouvoir bien mener le projet 
+nous avons suivi les étapes suivantes :
+\begin{itemize} 
+   \item{1ème Etape :Recherches}
+	
+	
+   \item{2ème Etape : Repartition des taches}
+			\paragraphe{}Le sujet étant libre nous devions nous fixer notre propre cahier des charges. Nous avons décidé de fonctionner avec 				plusieurs versions. Pour chaque nouvelle version, nous nous réunissions pour conceptualiser un nouveau problème et une nouvelle solution (nouveau cahier des charge), puis après avoir définit le diagramme UML de notre projet nous nous répartissions les tâches pour effectuer chacun une partie du travail.  Enfin, nous nous réunissions pour mettre en commun, effectuer une batterie de test et corriger les éventuelles erreurs.
+\paragraphe{}Cependant chacun avait des taches prioritaires à accomplir.
+\begin{table}[h!]
+\centering
+\begin{tabular} {|p{2.5cm}|p{5.5cm}|p{2cm}|}
+\hline
+Taches & Personne\\
+\hline
+mode graphique & Antoine\\
+\hline
+mode console & Ramatoulaye\\
+\hline
+documentation & Makoura \\
+\hline
+\end{tabular}
+\caption{Repartition des taches}
+\label{tab:document}
+\end{table}
+
+\item{3ème étape : développement des classes}
+\paragraph{}Pour développer nos classes nous nous sommes tout d'abord basés sur le diagramme UML suivant :
+\begin{wrapfigure}
+\includegraphics{image/uml_debut.png}
+\end{wrapfigure}
+\paragraphe{}Puis par la suite nous nous sommes rendu compte que la version conçue n'était pas celle qui nous fallait car elle ne permettait pas à l'utilisateur de choisir ces propres dimensions(taille de la grille ) , ni de placer lui meme les elements ou encore de choisir le nombre d'element qu'il souhait mettre ne place. Nous en sommes venus alors àpres élaborations de plusieurs version à la version finale dont le digramme UML est le suivant : 
+\begin{wrapfigure}
+\includegraphics{image/uml_final.png}
+\end{wrapfigure}
+\paragraphe{}Cette version donne plus de liberté qu'au part avant.
+\end{itemize}

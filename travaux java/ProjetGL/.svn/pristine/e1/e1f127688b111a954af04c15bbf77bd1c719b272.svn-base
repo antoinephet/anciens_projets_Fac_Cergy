@@ -1,0 +1,35 @@
+\section{Réalisation}
+\label{sec:impl}
+\paragraph{} Pour pouvoir bien mener le projet /"gardien de parc/"
+nous avons créer notre jeu  sous forme de video qui à aboutit pluisieurs étapes qui sont
+\subsection{1eme Etape}
+\textbf{Recherches}
+\paragraph{}
+le resultat des recherches était de bien pouvoir attaquer le projet, sans toute fois avoir une idée global du comportement d'un gardien de parc,
+sur un système de type  multi-agents réactifs  mettant en place comme éléments : un gardien, des intrus et des éléments du décor ou de l’interface graphique (eau, arbre, mur…).
+\subsection{2eme Etape}
+\textbf{Realisation des classes de bases}
+\paragraph{•}
+la réalisation et l'implémentation des classes il nous a fallu  sépare les classes d'objets ou d'éléments des classes de traitement.
+
+Puisceque nous avons comme  classe de base "GRILLE" et toutes ses sous classes, la classe CHEMIN et ses ous classes et la partie IHM.
+\subsection{3ere Etape}
+\textbf{Repartition des taches}
+Enfin  pour éviter la mésantante au sein du groupe et obtenir un resultat satisfaisant il fallait qu'on repartisse les taches et que chaque membre du groupe assumme ses reponsabilités par rapport à la réalisation de ce projet.
+
+\begin{table}[h!]
+\centering
+\begin{tabular} {|p{2.5cm}|p{5.5cm}|p{2cm}|}
+\hline
+Taches & Personne & Durée \\
+\hline
+Console & Antoine & 1 Mois\\
+Cahier des charges & Ramatoulaye & 3 Semaine\\
+\hline
+\hline
+Rapport final & Makoura & 3 Semaine \\
+\hline
+\end{tabular}
+\caption{Repartition des taches}
+\label{tab:document}
+\end{table}

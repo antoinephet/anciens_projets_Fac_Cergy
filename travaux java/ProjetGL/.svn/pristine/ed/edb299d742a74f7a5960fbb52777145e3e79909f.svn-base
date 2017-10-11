@@ -1,0 +1,73 @@
+package visiteurs;
+
+import modele.Gardien;
+import modele.Grille;
+import modele.Intrus;
+
+public class VisiteurDessinerElements implements Visiteur {
+
+	@Override
+	public void visite(Grille g) {
+		String entete = "";
+
+		System.out.print("   ");
+
+		for (int j = 0; j <= g.getNbColonne(); j++) {
+			entete = String.valueOf(j);
+			entete = rendreEntetesAQuatreCaracteres(entete);
+			System.out.print(entete);
+		}
+		
+		System.out.print("\n");
+		entete = "";
+		
+		for (int i = 0; i <= g.getNbLigne(); i++) {
+			entete = String.valueOf(i);
+			entete = rendreEntetesAQuatreCaracteres(entete);
+			System.out.print(entete);
+			System.out.print("|");
+			for (int j = 0; j <= g.getNbColonne(); j++) {
+				if (eDepot.rechercherGardien(i, j) != null )  {
+					System.out.print(" G |");
+				}
+				else if(eDepot.rechercherIntrus(i, j) != null) {
+					System.out.print(" I |");
+				}
+				
+				else {
+					System.out.print(" - |");
+				}
+			}
+			System.out.println();
+		}
+	}
+
+	@Override
+	public void visite(Gardien g) {
+	}
+	
+	private String rendreEntetesAQuatreCaracteres(String entete) {
+		if (entete.length() == 1) {
+			return "   " + entete;
+
+		} else {
+			if (entete.length() == 2) {
+				return "  " + entete;
+			} else {
+				if (entete.length() == 3) {
+					return " " + entete;
+				}
+
+			}
+
+		}
+		return entete;
+	}
+
+	@Override
+	public void visite(Intrus i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

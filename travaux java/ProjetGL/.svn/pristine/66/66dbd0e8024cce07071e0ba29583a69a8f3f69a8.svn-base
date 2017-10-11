@@ -1,0 +1,41 @@
+package donnees;
+
+import modele.Gardien;
+import modele.Grille;
+import modele.Intrus;
+
+public class EspaceFabrique {
+	EspaceDepot eDepot = EspaceDepot.getInstance();
+
+	public EspaceFabrique() {
+	}
+	
+	public void creerGrille(int lig, int col) {
+		eDepot.enregisterGrille(new Grille(lig, col));
+	}
+	
+	private void enregisterGrille(Grille grille) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Gardien creerGardien() {
+		return new Gardien();
+	}
+
+	public void creerPlusieursGardiens(int nbGardiens) {
+		for (int i=1; i<=nbGardiens; i++) {
+			eDepot.enregistrerGardien(creerGardien());
+			System.out.println("Gardien crée : "+i);
+		}
+	}
+	public Intrus creerIntrus() {
+		return new Intrus();
+	}
+	public void creerPlusieursIntrus(int nbIntrus) {
+		for (int i=1; i<=nbIntrus; i++) {
+			eDepot.enregistrerIntrus(creerIntrus());
+			System.out.println("Intrus crée : "+i);
+		}
+	}
+}
