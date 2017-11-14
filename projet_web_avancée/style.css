@@ -1,0 +1,200 @@
+h1,h3,h4,p
+{
+   /*color: white;*/
+}
+
+h1
+{
+   font-size: 40px; /*taille des caractères de 40 pixels*/
+}
+
+header{
+
+	margin-bottom: 20px;
+}
+
+header nav
+{
+
+	background-color: #0154a0;
+	border-radius: 25px; /*rend oval le nav de 25px*/
+	height: 35px; 
+}
+
+header nav ul li
+{
+	
+	list-style-type: none; /*retire les points de la liste à puces */
+	display: inline; /* aligne horizontalement les éléments de la liste en une ligne*/
+	line-height: 35px; /*abaisse la ligne de ces éléments de 35 pixels */
+	margin-left: 15px; /*écarte les éléments entre eux */
+	font-weight: bold; /*mettre en gras*/
+	
+
+}
+
+header nav ul li a
+{
+	
+	text-decoration: none; /*permet d'enlever les lignes des liens*/
+	color: white;
+
+}
+
+header nav ul li a:hover
+{
+	color: black;
+
+}
+
+
+
+section
+{
+	width: 600px;
+	float: left;
+
+}
+
+section article
+{
+	background-color: white;
+	border: 2px solid #0154a0; /*crée une bordure orange solid*/
+	/*border-radius: 25px;*/
+	margin-bottom: 20px;
+
+}
+
+section article h3
+{
+	background-color: #0154a0;
+	padding-left: 10px; /*décale le 1er caractère à droite de 10 pixels*/
+	color: white;
+
+}
+
+section article p
+{
+	/*padding: 2px 2px 2px 2px;  2px haut, 2px droite, 2px bas, 2px gauche*/
+	padding: 0px 5px; /* 0px au haut et au bas, 5px à gauche et à droite*/
+	text-align: justify;
+
+}
+
+.video1
+{
+	width: 500px;
+	height: 300px;
+
+}
+
+figcaption{
+
+	text-align: center;
+
+}
+
+
+
+aside
+{
+
+	background-color: white;
+	margin-left: 605px;
+	border: 2px solid #0154a0;
+	/*border-bottom-right-radius : 20px;*/
+
+
+}
+
+
+aside h4
+{
+	background-color: #0154a0;
+	text-align: center;
+	margin-top: 0px; /*fait monter le titre tout en haut du bloc aside*/
+	color: white;
+
+}
+
+aside p
+{
+	
+	padding: 0px 5px; /* 0px au haut et au bas, 5px à gauche et à droite*/
+	text-align: justify;
+
+}
+
+aside p .audio1
+{
+	
+	width: 180px;
+	height: 50px;
+}
+
+aside ul li
+{
+	
+	list-style-type: none;
+	margin-bottom: 2px;
+	margin-left: -40px;
+	text-align: center;
+	/*background-color: #0154a0;*/
+
+}
+
+aside ul li a
+{
+	
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+
+aside ul li a:hover
+{
+	
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+aside ul li
+{
+	
+	background-color: #006e2e;
+
+}
+
+aside ul li + li
+{
+
+	background-color: #006e2e;
+
+}
+
+
+footer p
+{
+	background-color: #0154a0;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 10px;
+	color: white;
+}
+
+
+
+body
+{
+   /*background-color: #000F2F;*/
+   background: url(images/football.jpg);
+   width:800px;
+   margin: auto;
+   
+}
+
+.clear{
+
+	clear: both; /*oblige le footer à se positionner sous l'élément flottant donc sous section et aside */
+}

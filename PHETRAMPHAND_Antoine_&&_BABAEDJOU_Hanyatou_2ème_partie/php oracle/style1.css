@@ -1,0 +1,338 @@
+
+
+
+
+body { /*police du corps par défaut*/
+	
+	background-color:#DCDBDB; /*arrière-plan en gris du site*/
+	font-size: 14px; /*87.5% par défaut font size: 14px */
+	font-family: Arial,sans-serif;
+	line-height: 1.429;  /* séparation hauteur entre les lignes*/
+	margin: 0; /*Padding crée une marge interne à l'élément. Elle sépare le contenu de la bordure. Marge externe */
+	padding: 0; /*Margin crée une marge autour de l'élément. Espacement interne*/
+	text-align: left;
+	}
+a {
+	 
+	text-decoration: none; /*enlève les surlignement des liens */
+}
+
+
+a:link, a:visited { /*(état par défaut)dont le lien n'a pas été visité; lien pointant sur une page déjà visitée, et présente dans l'historique du navigateur*/
+	color: #cf0404;
+	padding: 0 1px;
+	text-decoration: none;
+}
+
+
+a:hover, a:active { /*survolé par le curseur (souris);  l'internaute clique sur élément avec sa souris*/
+	background-color: #cf0404;
+	color: #fff;
+	text-decoration: none;
+}
+
+
+.body {
+	clear: both; /*oblige le footer à se positionner sous l'élément flottant donc sous section et aside */
+	margin: 0 auto; /* centre horizontalement le bloc */
+	width: 70%; /*élargit en largeur le bloc de 70%*/
+	/*background-color:#88bfe8;*/
+}
+
+/*--------------------------------
+----------Header 
+--------------------------------*/
+
+.mainHeader center{
+
+	width: 100%;
+	height: 100%; /*valeur par défaut*/ 
+	margin: 5% 0;
+	font-size: 60px;
+
+}
+
+
+.mainHeader img { /*propriétés de l'image en haut du site*/
+	width: 30%;
+	height: auto; /*valeur par défaut*/ 
+	margin: 3% 0; /*3% 5% le haut et le bas ont un padding de 10px et la gauche et la droite de 20px*/
+}
+
+
+.mainHeader nav {
+	background: #000000; /*couleur arrière plan des rubriques ou du header du site en gris*/
+	font-size: 1.143em;
+	height: 40px; /*hauteur du header*/
+	line-height: 30px; /* séparation hauteur entre les lignes*/
+	margin: 0 auto 30px auto; /* 0 auto 30px auto le haut a un margin de 1em, la droite de 3px, le bas de 30px et la gauche de 5px*/
+	text-align: center;
+	border-radius: 5px; /*les bordures arrondies*/
+	-moz-border-radius: 5px; /*pour mozilla*/
+	-webkit-border-radius: 5px; /* pour Chrome, Safari, Android...*/
+}
+
+
+/*---------------------------------------------*/
+#menu ul{
+
+	margin: 0;
+	padding:0;
+	line-height: 30px;
+}
+
+#menu li{
+
+	list-style: none; /*liste et ligne horizontal*/
+	float: left;
+	position: relative; /*positione tous les sous puces verticalement*/
+	background-color:#398235; 
+}
+
+
+
+
+#menu ul ul{
+
+	position: absolute; /*positione tous les puces verticalement*/
+	top: 30px;
+	visibility: hidden;
+
+}
+
+#menu ul li:hover ul{
+
+	visibility: visible;
+}
+
+#menu li:hover{
+
+	background-color: #4096ee;
+}
+
+#menu ul li ul a:hover{
+	color: #FFF;
+	background-color : #000;
+}
+
+
+#menu ul li a{
+
+	color: #000;
+	text-decoration: none;
+	width: 150px; /*largeur*/
+	height: 30px; /*hauteur des cases*/
+	display: block;
+	text-align: center; /*centre au milieu des cases*/
+	border: 1px solid #000; /*encadre les puces*/
+	/*text-shadow: 1px 1px 1px #ff0000;*/ /*texte ombre en rouge*/
+}
+
+.mainHeader nav ul li ul li{
+
+	list-style: none; /*liste et ligne horizontal*/
+	float: left;
+	position: relative; /*positione tous les sous puces verticalement*/
+	background-color:#398235; 
+}
+
+
+.mainHeader nav ul ul {
+	
+	position: absolute; /*positione tous les puces verticalement*/
+	top: 30px;
+	visibility: hidden; /*cache les sous puces*/
+}
+
+.mainHeader nav ul li:hover ul{
+
+	visibility: visible;
+
+}
+
+/*---------------------------------------------*/
+
+.mainHeader nav ul {
+	list-style: none; /*efface les puces*/
+	margin: 0 auto; /*3% 5% le haut et le bas ont un padding de 10px et la gauche et la droite de 20px*/
+}
+
+.mainHeader nav ul li {
+	float: left; /*place les rubriques en une ligne*/
+	display: inline; 
+}
+
+	
+.mainHeader nav a:link, .mainHeader nav a:visited {
+	color: #ffffff;
+	display: inline-block;
+	height: 30px;
+	padding: 5px 21px; /*espacement entre les éléments*/
+	text-decoration: none; /*efface les surlignements des liens*/
+}
+
+.mainHeader nav a:hover, .mainHeader nav a:active,
+.mainHeader nav .active a:link, .mainHeader nav .active a:visited {
+	background: #cf0404; /*arrière plan des éléments si sélectionnés en rouge*/
+	color: #fff; /*texte en blanc*/
+	text-shadow: none !important; /*texte ombrage  !important permet de spécifier que la propriété est la plus importante dans votre feuille css*/
+}
+	
+.mainHeader nav li a {
+	/*border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;*/
+}
+
+
+
+/*--------------------------------
+---------Fin Header 
+--------------------------------*/
+
+/*--------------------------------
+---------Contenu principal 
+--------------------------------*/
+
+.mainContent { /*/*propriétés du bloc principal*/
+	/*background-color:#88bfe8;*/
+	
+	overflow: hidden; /* permet de gérer les dépassements de blocs (calque, champ formulaire...) et l'affichage de barres de défilement. cache tout ce qui dépasse.*/
+	line-height: 25px; /* séparation hauteur entre les lignes*/
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+
+.topcontent { /*propriétés de l'article du haut*/
+	/*background-color:#a9db80;*/
+	background-color:#FFFFFF; /*contenu de l'article en blanc*/
+	border-radius: 5px; /*5px*/
+	-moz-border-radius: 5px; /*5px*/
+	-webkit-border-radius: 5px;	/*5px*/
+	padding: 3% 5%;	/*3% 5% le haut et le bas ont un padding de 10px et la gauche et la droite de 20px*/
+	margin-bottom: 3%; /*3%*/ 
+}
+
+.bottomcontent { /*propriétés de l'article du bas*/
+	/*background-color: #a9db80;*/
+	background-color:#FFFFFF; /*contenu de l'article en blanc*/
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;	
+	padding: 3% 5%;*/
+}
+
+.content {
+	width: 100%;
+	float: left;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	/*background-color:#a9db80;*/
+	text-align: justify;
+}
+
+.post-info {
+	font-style: italic;
+	color: #999;
+	font-size: 85%;
+}
+
+/*--------------------------------
+---------Fin Contenu principal 
+--------------------------------*/
+
+
+/*--------------------------------
+---------Pied de page
+--------------------------------*/
+
+.mainFooter {
+		width: 100%;
+		float: left;
+		margin: 5% 0; /*fait descendre le bloc de 5%*/
+		padding-left: 0;
+		background-color: #000000;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		color: #FFF;
+
+	}
+	
+.mainFooter p {
+		width: 86%;
+		margin: 2% auto;
+
+	}
+
+/*images pour les drapeaux*/
+.flag{
+		text-align: right;
+
+	}
+
+
+/*--------------------------------
+---------Fin Pied de page
+--------------------------------*/
+
+
+/*--------------------------------
+---------Galerie images
+--------------------------------*/
+
+.gallery{
+
+	width:528px;
+	margin: auto; /*centrer la liste des imgs*/
+
+}
+
+.gallery ul{
+
+	list-style: none; /*efface les points des puces*/
+}
+
+.gallery li{
+
+	float: left; /*aligne la liste des imgs horizontalement*/
+	margin: 10px; /*décalage entre les images*/
+}
+
+.gallery img{
+
+	display: block; /*Les éléments de type block peuvent contenir à la fois d'autres éléments de type block, des éléments de type inline ou du texte1.
+Il est possible de fixer une largeur et une hauteur à ces éléments
+Par défaut, la largeur d'un élément de type block est aussi grande que celle de son conteneur
+Ils s'empilent naturellement les uns au-dessus des autres, dans l'ordre du flux HTML (Dans un flux de texte, ils passent à la ligne et forcent le retour à la ligne des éléments qui les suivent, les caractères invisibles présents avant et après sont ignorés)*/
+	padding:5px;
+	background: #42517f;
+	border: 1px solid #99adeb;
+	box-shadow: 1px 1px 2px #000;
+}
+
+.gallery img:hover {
+
+	border: 1px solid #fff;
+}
+
+
+
+
+
+/*--------------------------------
+---------définit les types de médias ciblés (séparés par des virgules) par un ensemble de règles (délimitées par des accolades)
+--------------------------------*/
+
+@media only screen and (min-width : 150px) and (max-width : 780px)
+{
+
+
+	
+
+	}
+
+
